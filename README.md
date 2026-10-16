@@ -1,81 +1,90 @@
-# History Maker Tech — Official React Application
+# History Maker Tech — Official Website
 
-> **Direct-to-Developer Engineering. Zero Agency Bloat.**  
-> Built with modern **React 19**, **Vite**, **Three.js**, and **Swiper.js** for an ultra-fast, cinematic 3D digital studio experience.
-
----
-
-## 🚀 Overview
-
-This repository has been professionally structured as a modern **React + Vite** single-page application. It incorporates:
-- **Interactive Three.js 3D WebGL Canvas:** Floating particle sphere simulation with post-processing bloom, mouse parallax, and scroll dynamics.
-- **Native Swiper.js 3D Stacked Cards:** Interactive service cards with real-time cursor tilt (`rotateX`, `rotateY`), soft glowing borders, dynamic mouse spotlighting, and slide counters.
-- **Autonomous Preloader:** Calibration sequence (000% → 100%) with non-blocking failover safety.
-- **Direct WhatsApp & Phone Dialers:** Instant communication pipelines with zero agency overhead.
-- **Cinematic Atmosphere:** Ambient glowing orbs, scroll progress indicator, and custom dual-ring cursor tracking.
+> **Digital Solutions for Your Business.**  
+> **Direct-to-Developer Engineering · Zero Agency Bloat.**  
+> Built with modern **React 19**, **Vite**, and **Swiper.js** for an ultra-fast, smooth, and luxury digital studio experience.
 
 ---
 
-## 📁 Professional React Folder Structure
+## 🚀 Overview & Key Features
+
+This repository contains the production-ready **React 19 + Vite** single-page application for **History Maker Tech**:
+
+- **Full-Screen Hero Section:** 100vh viewport presentation featuring the glowing `BUILD · AUTOMATE · GROWTH` trust badge and direct project actions.
+- **Full-Screen About Section:** Frosted glassmorphism with ambient refractive cyan & gold glowing orbs, 3D tilt cards, 4 value pillars, and direct developer communication channels.
+- **Smooth Multi-Card Services Showcase:** Multi-slide horizontal carousel (3 full cards at once on desktop, responsive peeks on tablet/mobile), interactive category filter tabs, live counter, and clickable progress pagination.
+- **High-Performance Ambient Background:** Sleek obsidian dark mode with subtle radial ambient auras (zero WebGL/balloon lag).
+- **Dual Custom Cursor & Smooth Lenis Scrolling:** Cinematic cursor ring tracking with fluid, non-blocking page scrolling.
+- **Vercel-Ready Architecture:** Includes `vercel.json` for seamless SPA routing and instant one-click deployment.
+
+---
+
+## 📁 Project Architecture & Structure
 
 ```plaintext
 History Maker Tech/
-├── index.html                   # Vite entry point HTML5 document
+├── index.html                   # Vite entry point HTML document
 ├── vite.config.js               # Vite + React plugin configuration
-├── package.json                 # Project dependencies & scripts (React 19, Three.js, Swiper)
-├── .gitignore                   # Version control ignore rules
-├── README.md                    # Project documentation & guidelines
-├── public/                      # Static assets served at root
-│   └── assets/
-│       └── images/
-│           ├── logo.png         # Primary brand logo
-│           └── logo.jpg         # High-resolution fallback logo
-└── src/                         # React source code
-    ├── main.jsx                 # React root mount (ReactDOM.createRoot)
-    ├── App.jsx                  # Main application orchestrator
+├── package.json                 # Dependencies & scripts (React 19, Swiper, Lucide icons)
+├── vercel.json                  # Single-page application rewrites for Vercel deployment
+├── .gitignore                   # Version control exclusions
+├── README.md                    # Project documentation & guides
+├── public/                      # Static assets
+│   └── assets/images/           # Brand logo files
+└── src/                         # React application source code
+    ├── main.jsx                 # React root mount
+    ├── App.jsx                  # Master app component orchestrator
     ├── index.css                # Master consolidated design system & animations
     ├── data/
-    │   └── siteData.js          # Centralized configuration, services, and content
+    │   └── siteData.js          # Centralized services, metrics, and business configuration
     └── components/
-        ├── Preloader.jsx        # Calibration progress loader
-        ├── ThreeCanvas.jsx      # Three.js 3D sphere WebGL simulation
-        ├── CinematicEffects.jsx # Ambient glow, cursor follower, scroll progress
-        ├── Header.jsx           # Fixed glassmorphism navbar & mobile drawer
-        ├── Hero.jsx             # Headline, metric chips, and primary CTAs
-        ├── About.jsx            # Direct-to-Developer philosophy & values
-        ├── Services.jsx         # 3D Swiper cards carousel with cursor tilt
-        ├── Features.jsx         # Engineering advantages grid
-        ├── Process.jsx          # 4-stage transparent sprint roadmap
-        ├── Work.jsx             # Selected case studies with ROI metrics
-        ├── TechStack.jsx        # Interactive tech stack matrix
+        ├── Preloader.jsx        # Autonomous calibration loader
+        ├── AmbientBackground.jsx# GPU-efficient ambient obsidian background
+        ├── CinematicEffects.jsx # Cursor follower & Lenis smooth scroll
+        ├── Header.jsx           # Fixed glassmorphic navigation bar & mobile drawer
+        ├── Hero.jsx             # 100vh hero section with glowing trust badge
+        ├── About.jsx            # Full-screen glassmorphism About section with 3D tilt
+        ├── Services.jsx         # Smooth multi-card carousel showcase with category filters
         ├── Testimonials.jsx     # Client ratings & endorsements
-        ├── Faq.jsx              # Collapsible accordion FAQ
-        ├── Contact.jsx          # WhatsApp / call direct links & brief inquiry form
-        └── Footer.jsx           # Brand, solutions directory, and copyright
+        ├── Faq.jsx              # Collapsible FAQ accordion
+        ├── Contact.jsx          # Direct WhatsApp and call inquiries
+        └── Footer.jsx           # Brand directory and legal
 ```
 
 ---
 
-## 🛠️ Development & Production Scripts
+## 🛠️ Local Development & Build
 
-### Start Local Development Server
+### 1. Install Dependencies
+```bash
+npm install
+```
+
+### 2. Start Development Server
 ```bash
 npm run dev
-# or: npm start
 ```
-Starts the high-speed Vite dev server at **`http://localhost:8080`** with Hot Module Replacement (HMR).
+Runs the local Vite dev server at **`http://localhost:8080`** with instant Hot Module Replacement (HMR).
 
-### Build for Production
+### 3. Build for Production
 ```bash
 npm run build
 ```
-Generates optimized and minified static assets in the `dist/` directory.
+Creates an optimized static bundle in the `dist/` folder.
 
-### Preview Production Build
-```bash
-npm run preview
-```
-Previews the production `dist/` bundle locally on port 8080.
+---
+
+## 🌐 Deploying to Vercel
+
+### Option 1: Via GitHub Integration (Recommended)
+1. Go to [vercel.com](https://vercel.com) and log in with your GitHub account (`Shajith-7`).
+2. Click **Add New...** → **Project**.
+3. Select your repository: **`History-Maker-Tech`**.
+4. Vercel automatically detects **Vite**:
+   - **Framework Preset:** Vite
+   - **Build Command:** `npm run build`
+   - **Output Directory:** `dist`
+5. Click **Deploy**. Your site will be live on a `*.vercel.app` URL with automatic SSL and continuous deployment!
 
 ---
 
