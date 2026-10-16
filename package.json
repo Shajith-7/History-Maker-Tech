@@ -1,0 +1,36 @@
+{
+  "name": "history-maker-tech",
+  "version": "1.1.0",
+  "description": "Official website for History Maker Tech — cinematic 3D scroll experience",
+  "main": "index.html",
+  "type": "module",
+  "scripts": {
+    "dev": "vite --port 8080 --host",
+    "start": "vite --port 8080 --host",
+    "build": "vite build",
+    "preview": "vite preview --port 8080"
+  },
+  "keywords": [
+    "history-maker-tech",
+    "threejs",
+    "gsap",
+    "lenis",
+    "swiper",
+    "3d-web"
+  ],
+  "author": "History Maker Tech",
+  "license": "UNLICENSED",
+  "dependencies": {
+    "gsap": "^3.12.7",
+    "lenis": "^1.1.20",
+    "lucide-react": "^1.58.0",
+    "react": "^19.3.1",
+    "react-dom": "^19.3.1",
+    "swiper": "^11.2.10",
+    "three": "^0.160.1"
+  },
+  "devDependencies": {
+    "@vitejs/plugin-react": "^6.1.2",
+    "vite": "^8.3.4"
+  }
+}

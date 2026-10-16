@@ -1,0 +1,20 @@
+# Node dependencies
+node_modules/
+dist/
+
+# Operating System Files
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# Environment and editor files
+.env
+.env.local
+.vscode/
+.idea/
+
+# Temporary / backup files
+*.tmp
+*.bak
+*.log
+scratch/

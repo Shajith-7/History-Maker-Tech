@@ -1,0 +1,1416 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <title>History Maker Tech — Digital Solutions for Your Business</title>
+  <meta name="description" content="Direct-to-Developer Engineering. Zero Agency Bloat. We build powerful websites, custom software, mobile applications, and intelligent automation solutions for growing businesses.">
+  <meta name="theme-color" content="#050609">
+
+  <!-- Favicon / Brand Identity -->
+  <link rel="icon" type="image/png" href="./assets/images/logo.png">
+  <link rel="apple-touch-icon" href="./assets/images/logo.png">
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;600;700&family=Raleway:ital,wght@0,400;0,500;0,600;0,700;0,800;0,900;1,700&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+  <!-- Vendor CSS: Swiper.js (Local with CDN Fallback) -->
+  <link rel="stylesheet" href="./assets/vendor/swiper-bundle.min.css" onerror="this.onerror=null;this.href='https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css'">
+
+  <!-- Core Design System & Stylesheet -->
+  <link rel="stylesheet" href="./assets/css/style.css">
+  <link rel="stylesheet" href="./assets/css/cinematic.css">
+</head>
+<body>
+
+  <!-- Background Dynamic Color Layers & 3D WebGL Canvas -->
+  <div id="bg-gradient-layer" class="bg-stage-0"></div>
+  <canvas id="webgl-canvas"></canvas>
+  <div class="ambient-glow glow-a" aria-hidden="true"></div>
+  <div class="ambient-glow glow-b" aria-hidden="true"></div>
+  <div class="ambient-vignette"></div>
+  <div id="scroll-progress" class="scroll-progress" aria-hidden="true"></div>
+  <div id="cinematic-cursor" class="cinematic-cursor" aria-hidden="true"></div>
+  <div id="cinematic-cursor-ring" class="cinematic-cursor-ring" aria-hidden="true"></div>
+
+  <!-- Full-Screen Preloader -->
+  <div id="preloader">
+    <div class="loader-content">
+      <div class="loader-status">
+        <span class="loader-status-dot"></span>
+        <span>CALIBRATING DIGITAL EXPERIENCE</span>
+      </div>
+      <div class="loader-bar-wrap">
+        <div class="loader-bar-fill" id="loader-progress-bar"></div>
+      </div>
+      <div class="loader-counter" id="loader-progress-text">000%</div>
+    </div>
+  </div>
+  <!-- Autonomous Preloader Controller -->
+  <script src="./assets/js/preloader.js"></script>
+
+<!-- Main Website Content Wrapper -->
+  <div class="site-wrapper">
+
+    <!-- Fixed Header -->
+    <header id="site-header">
+      <div class="container header-inner">
+        <!-- Logo -->
+        <a href="#home" class="brand-link" aria-label="History Maker Tech Homepage">
+          <img src="assets/images/logo.png"
+               alt="History Maker Tech Logo"
+               class="brand-logo-img"
+               onerror="this.onerror=null;this.src='assets/images/logo.jpg';">
+        </a>
+
+        <!-- Desktop Navigation -->
+        <nav aria-label="Main Navigation">
+          <ul class="nav-links-desktop">
+            <li class="nav-item"><a href="#home" class="active">Home</a></li>
+            <li class="nav-item"><a href="#about">About</a></li>
+            <li class="nav-item"><a href="#services">Services</a></li>
+            <li class="nav-item"><a href="#testimonials">Testimonials</a></li>
+            <li class="nav-item"><a href="#faq">FAQ</a></li>
+            <li class="nav-item"><a href="#contact">Contact</a></li>
+          </ul>
+        </nav>
+
+        <!-- Right Header Actions -->
+        <div class="header-actions">
+          <button id="studio-drawer-open-btn" class="btn-icon-glass" title="Open Studio Controls" aria-label="Open 3D Studio Controls">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <line x1="4" y1="21" x2="4" y2="14"></line>
+              <line x1="4" y1="10" x2="4" y2="3"></line>
+              <line x1="12" y1="21" x2="12" y2="12"></line>
+              <line x1="12" y1="8" x2="12" y2="3"></line>
+              <line x1="20" y1="21" x2="20" y2="16"></line>
+              <line x1="20" y1="12" x2="20" y2="3"></line>
+              <line x1="1" y1="14" x2="7" y2="14"></line>
+              <line x1="9" y1="8" x2="15" y2="8"></line>
+              <line x1="17" y1="16" x2="23" y2="16"></line>
+            </svg>
+          </button>
+
+          <a href="#contact" class="btn-header-cta">
+            <span>Let's Talk</span>
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+              <line x1="5" y1="12" x2="19" y2="12"></line>
+              <polyline points="12 5 19 12 12 19"></polyline>
+            </svg>
+          </a>
+
+          <!-- Mobile Hamburger -->
+          <button id="mobile-menu-toggle-btn" class="mobile-menu-btn" aria-label="Toggle mobile menu" aria-expanded="false">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <line x1="3" y1="12" x2="21" y2="12"></line>
+              <line x1="3" y1="6" x2="21" y2="6"></line>
+              <line x1="3" y1="18" x2="21" y2="18"></line>
+            </svg>
+          </button>
+        </div>
+      </div>
+    </header>
+
+    <!-- Mobile Navigation Drawer -->
+    <div id="mobile-nav-backdrop" class="mobile-nav-backdrop"></div>
+    <div id="mobile-nav" role="dialog" aria-modal="true" aria-label="Mobile Navigation">
+      <div>
+        <div class="mobile-nav-header">
+          <img src="assets/images/logo.png"
+               alt="History Maker Tech"
+               style="height: 38px; width: auto;"
+               onerror="this.onerror=null;this.src='assets/images/logo.jpg';">
+          <button id="mobile-menu-close-btn" class="btn-icon-glass" aria-label="Close menu">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <line x1="18" y1="6" x2="6" y2="18"></line>
+              <line x1="6" y1="6" x2="18" y2="18"></line>
+            </svg>
+          </button>
+        </div>
+        <ul class="mobile-nav-links">
+          <li><a href="#home" class="mobile-nav-link">Home</a></li>
+          <li><a href="#about" class="mobile-nav-link">About</a></li>
+          <li><a href="#services" class="mobile-nav-link">Services</a></li>
+          <li><a href="#testimonials" class="mobile-nav-link">Testimonials</a></li>
+          <li><a href="#faq" class="mobile-nav-link">FAQ</a></li>
+          <li><a href="#contact" class="mobile-nav-link">Contact</a></li>
+        </ul>
+      </div>
+
+      <div style="display: flex; flex-direction: column; gap: 14px;">
+        <button id="mobile-controls-open-btn" class="btn-secondary" style="width: 100%;">
+          <span>3D Studio Controls</span>
+        </button>
+        <a href="#contact" class="btn-gold mobile-nav-link" style="width: 100%; text-align: center;">
+          <span>Let's Talk</span>
+        </a>
+      </div>
+    </div>
+
+    <!-- =======================================================================
+         SECTION 01: HOME / HERO
+         ======================================================================= -->
+    <section id="home">
+      <div class="container">
+        <div class="hero-content">
+          <div class="hero-eyebrow reveal">
+            <span>[ DIGITAL SOLUTIONS FOR YOUR BUSINESS ]</span>
+          </div>
+
+          <h1 class="hero-heading reveal stagger-1">
+            Turn Your Ideas Into <span class="gold-gradient-text">Digital Growth.</span>
+          </h1>
+
+          <p class="hero-subhead reveal stagger-2">
+            We build powerful websites, custom software, mobile applications, and intelligent automation solutions that help businesses work smarter, scale faster, and grow with confidence.
+          </p>
+
+          <div class="hero-ctas reveal stagger-3">
+            <a href="#contact" class="btn-gold">
+              <span>Start Your Project</span>
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                <line x1="5" y1="12" x2="19" y2="12"></line>
+                <polyline points="12 5 19 12 12 19"></polyline>
+              </svg>
+            </a>
+            <a href="#services" class="btn-secondary">
+              <span>Explore Our Services</span>
+            </a>
+          </div>
+
+          <div class="hero-trust reveal stagger-4">
+            <span>DIRECT DEVELOPERS · TRANSPARENT EXECUTION · BUILT FOR GROWTH</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="hero-scroll-indicator">
+        <span>SCROLL TO EXPLORE</span>
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <line x1="12" y1="5" x2="12" y2="19"></line>
+          <polyline points="19 12 12 19 5 12"></polyline>
+        </svg>
+      </div>
+    </section>
+
+    <!-- =======================================================================
+         SECTION 02: ABOUT
+         ======================================================================= -->
+    <section id="about">
+      <div class="container">
+        <div class="about-grid">
+          <div class="about-left reveal">
+          <div class="section-eyebrow">
+            <span>[ ABOUT HISTORY MAKER TECH ]</span>
+          </div>
+          <div class="section-glow-line" aria-hidden="true"></div>
+            <h2 class="section-heading">
+              Direct-to-Developer Engineering. <span class="gold-gradient-text">Zero Agency Bloat.</span>
+            </h2>
+            <p class="about-intro-text">
+              We align your digital roadmap directly with hands-on software engineers. Our distributed team designs robust web and mobile architectures engineered specifically for your business logic, operational workflow, and performance targets.
+            </p>
+            <div style="margin-top: 10px;">
+              <a href="#contact" class="btn-gold">
+                <span>Start Direct Consultation</span>
+              </a>
+            </div>
+          </div>
+
+          <div class="about-cards-wrap">
+            <!-- Vision Card -->
+            <div class="vm-card reveal stagger-1">
+              <div class="vm-card-header">
+                <span class="vm-badge">OUR VISION</span>
+                <div class="vm-icon-box">
+                  <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <circle cx="12" cy="12" r="10"></circle>
+                    <path d="M12 2a14.5 14.5 0 0 0 0 20 14.5 14.5 0 0 0 0-20"></path>
+                    <path d="M2 12h20"></path>
+                  </svg>
+                </div>
+              </div>
+              <h3 class="vm-card-title">The Benchmark for Direct-to-Developer Engineering</h3>
+              <p class="vm-quote">
+                "To establish a new global standard for digital software delivery, where growing organizations access modern, production-grade web and mobile engineering without paying traditional agency markups."
+              </p>
+            </div>
+
+            <!-- Mission Card -->
+            <div class="vm-card reveal stagger-2">
+              <div class="vm-card-header">
+                <span class="vm-badge">OUR MISSION</span>
+                <div class="vm-icon-box">
+                  <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"></polygon>
+                  </svg>
+                </div>
+              </div>
+              <h3 class="vm-card-title">Direct Access. Transparent Execution.</h3>
+              <p class="vm-quote">
+                "To empower organizations by connecting them directly with active, hands-on software engineers—eliminating non-technical intermediaries to deliver high-performance digital systems at honest, milestone-driven pricing."
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- =======================================================================
+         SECTION 03: SERVICES
+         ======================================================================= -->
+    <section id="services">
+      <div class="container">
+        <div class="services-header reveal">
+          <div class="section-eyebrow">
+            <span>[ WHAT WE BUILD ]</span>
+          </div>
+          <div class="section-glow-line" aria-hidden="true"></div>
+          <h2 class="section-heading">
+            Technology That Moves Your <span class="gold-gradient-text">Business Forward.</span>
+          </h2>
+          <p class="section-subhead" style="margin: 0 auto;">
+            From your first website to connected business systems and intelligent automation, we build practical digital solutions designed around the way your business works.
+          </p>
+        </div>
+
+        <!-- Swiper 3D Interactive Cards Carousel -->
+        <div class="services-carousel-wrapper reveal">
+          <div class="services-carousel-main">
+            <!-- Custom Navigation Previous Button -->
+            <button class="services-nav-btn services-swiper-prev" aria-label="Previous service" title="Previous Service">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+                <polyline points="15 18 9 12 15 6"></polyline>
+              </svg>
+            </button>
+
+            <!-- Swiper Cards Carousel Root -->
+            <div class="swiper services-swiper" id="services-swiper">
+              <div class="swiper-wrapper">
+                <!-- Slide 1: Website Development -->
+                <div class="swiper-slide" data-slide-index="0">
+                  <article class="service-card" data-service-card>
+                    <div class="card-border-animated" aria-hidden="true"></div>
+                    <div class="card-border-reflection" aria-hidden="true"></div>
+                    <div class="card-spotlight" aria-hidden="true"></div>
+                    <div class="service-card-inner">
+                      <div class="service-card-top-meta">
+                        <div class="service-category-badge">
+                          <span class="badge-dot"></span>
+                          <span>WEB ENGINEERING</span>
+                        </div>
+                        <span class="service-card-num">// 01</span>
+                      </div>
+                      <div class="service-card-header">
+                        <div class="service-icon-box">
+                          <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <rect x="2" y="3" width="20" height="14" rx="2" ry="2"></rect>
+                            <line x1="8" y1="21" x2="16" y2="21"></line>
+                            <line x1="12" y1="17" x2="12" y2="21"></line>
+                          </svg>
+                        </div>
+                        <h3 class="service-card-title">Website Development</h3>
+                      </div>
+                      <p class="service-card-desc">Modern, responsive websites built to strengthen your online presence, communicate your value, and turn visitors into customers.</p>
+                      <div class="service-card-tags">
+                        <span class="service-tag">Responsive UX</span>
+                        <span class="service-tag">High Performance</span>
+                        <span class="service-tag">SEO Optimized</span>
+                      </div>
+                      <div class="service-card-footer">
+                        <button class="btn-discuss-service" data-service="Website Development">
+                          <span>Discuss this service</span>
+                          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+                            <line x1="5" y1="12" x2="19" y2="12"></line>
+                            <polyline points="12 5 19 12 12 19"></polyline>
+                          </svg>
+                        </button>
+                      </div>
+                    </div>
+                  </article>
+                </div>
+
+                <!-- Slide 2: Custom Software Development -->
+                <div class="swiper-slide" data-slide-index="1">
+                  <article class="service-card" data-service-card>
+                    <div class="card-border-animated" aria-hidden="true"></div>
+                    <div class="card-border-reflection" aria-hidden="true"></div>
+                    <div class="card-spotlight" aria-hidden="true"></div>
+                    <div class="service-card-inner">
+                      <div class="service-card-top-meta">
+                        <div class="service-category-badge">
+                          <span class="badge-dot"></span>
+                          <span>CUSTOM SOFTWARE</span>
+                        </div>
+                        <span class="service-card-num">// 02</span>
+                      </div>
+                      <div class="service-card-header">
+                        <div class="service-icon-box">
+                          <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <polyline points="16 18 22 12 16 6"></polyline>
+                            <polyline points="8 6 2 12 8 18"></polyline>
+                            <line x1="14" y1="4" x2="10" y2="20"></line>
+                          </svg>
+                        </div>
+                        <h3 class="service-card-title">Custom Software Development</h3>
+                      </div>
+                      <p class="service-card-desc">Purpose-built software that fits your business processes, solves operational challenges, and supports long-term growth.</p>
+                      <div class="service-card-tags">
+                        <span class="service-tag">Tailored Logic</span>
+                        <span class="service-tag">Scalable Backend</span>
+                        <span class="service-tag">API Integration</span>
+                      </div>
+                      <div class="service-card-footer">
+                        <button class="btn-discuss-service" data-service="Custom Software Development">
+                          <span>Discuss this service</span>
+                          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+                            <line x1="5" y1="12" x2="19" y2="12"></line>
+                            <polyline points="12 5 19 12 12 19"></polyline>
+                          </svg>
+                        </button>
+                      </div>
+                    </div>
+                  </article>
+                </div>
+
+                <!-- Slide 3: Mobile App Development -->
+                <div class="swiper-slide" data-slide-index="2">
+                  <article class="service-card" data-service-card>
+                    <div class="card-border-animated" aria-hidden="true"></div>
+                    <div class="card-border-reflection" aria-hidden="true"></div>
+                    <div class="card-spotlight" aria-hidden="true"></div>
+                    <div class="service-card-inner">
+                      <div class="service-card-top-meta">
+                        <div class="service-category-badge">
+                          <span class="badge-dot"></span>
+                          <span>MOBILE ENGINEERING</span>
+                        </div>
+                        <span class="service-card-num">// 03</span>
+                      </div>
+                      <div class="service-card-header">
+                        <div class="service-icon-box">
+                          <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <rect x="5" y="2" width="14" height="20" rx="2" ry="2"></rect>
+                            <line x1="12" y1="18" x2="12.01" y2="18"></line>
+                          </svg>
+                        </div>
+                        <h3 class="service-card-title">Mobile App Development</h3>
+                      </div>
+                      <p class="service-card-desc">User-friendly mobile applications designed to connect your customers, simplify workflows, and extend your digital reach.</p>
+                      <div class="service-card-tags">
+                        <span class="service-tag">iOS & Android</span>
+                        <span class="service-tag">Fluid Gestures</span>
+                        <span class="service-tag">Cloud Connected</span>
+                      </div>
+                      <div class="service-card-footer">
+                        <button class="btn-discuss-service" data-service="Mobile App Development">
+                          <span>Discuss this service</span>
+                          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+                            <line x1="5" y1="12" x2="19" y2="12"></line>
+                            <polyline points="12 5 19 12 12 19"></polyline>
+                          </svg>
+                        </button>
+                      </div>
+                    </div>
+                  </article>
+                </div>
+
+                <!-- Slide 4: CRM Development -->
+                <div class="swiper-slide" data-slide-index="3">
+                  <article class="service-card" data-service-card>
+                    <div class="card-border-animated" aria-hidden="true"></div>
+                    <div class="card-border-reflection" aria-hidden="true"></div>
+                    <div class="card-spotlight" aria-hidden="true"></div>
+                    <div class="service-card-inner">
+                      <div class="service-card-top-meta">
+                        <div class="service-category-badge">
+                          <span class="badge-dot"></span>
+                          <span>CLIENT RELATIONS</span>
+                        </div>
+                        <span class="service-card-num">// 04</span>
+                      </div>
+                      <div class="service-card-header">
+                        <div class="service-icon-box">
+                          <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path>
+                            <circle cx="9" cy="7" r="4"></circle>
+                            <path d="M23 21v-2a4 4 0 0 0-3-3.87"></path>
+                            <path d="M16 3.13a4 4 0 0 1 0 7.75"></path>
+                          </svg>
+                        </div>
+                        <h3 class="service-card-title">CRM Development</h3>
+                      </div>
+                      <p class="service-card-desc">Custom customer relationship management systems that organize leads, track follow-ups, improve visibility, and strengthen customer relationships.</p>
+                      <div class="service-card-tags">
+                        <span class="service-tag">Lead Pipeline</span>
+                        <span class="service-tag">Automated Triggers</span>
+                        <span class="service-tag">Custom Dashboards</span>
+                      </div>
+                      <div class="service-card-footer">
+                        <button class="btn-discuss-service" data-service="CRM Development">
+                          <span>Discuss this service</span>
+                          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+                            <line x1="5" y1="12" x2="19" y2="12"></line>
+                            <polyline points="12 5 19 12 12 19"></polyline>
+                          </svg>
+                        </button>
+                      </div>
+                    </div>
+                  </article>
+                </div>
+
+                <!-- Slide 5: AI Automation Solutions -->
+                <div class="swiper-slide" data-slide-index="4">
+                  <article class="service-card" data-service-card>
+                    <div class="card-border-animated" aria-hidden="true"></div>
+                    <div class="card-border-reflection" aria-hidden="true"></div>
+                    <div class="card-spotlight" aria-hidden="true"></div>
+                    <div class="service-card-inner">
+                      <div class="service-card-top-meta">
+                        <div class="service-category-badge">
+                          <span class="badge-dot"></span>
+                          <span>AI & WORKFLOWS</span>
+                        </div>
+                        <span class="service-card-num">// 05</span>
+                      </div>
+                      <div class="service-card-header">
+                        <div class="service-icon-box">
+                          <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <rect x="3" y="11" width="18" height="10" rx="2"></rect>
+                            <circle cx="12" cy="5" r="2"></circle>
+                            <path d="M12 7v4"></path>
+                            <line x1="8" y1="16" x2="8" y2="16"></line>
+                            <line x1="16" y1="16" x2="16" y2="16"></line>
+                          </svg>
+                        </div>
+                        <h3 class="service-card-title">AI Automation Solutions</h3>
+                      </div>
+                      <p class="service-card-desc">Practical AI-powered workflows that reduce repetitive work, organize information, and help your team operate more efficiently.</p>
+                      <div class="service-card-tags">
+                        <span class="service-tag">Intelligent Routing</span>
+                        <span class="service-tag">Document Parsing</span>
+                        <span class="service-tag">Zero Busywork</span>
+                      </div>
+                      <div class="service-card-footer">
+                        <button class="btn-discuss-service" data-service="AI Automation Solutions">
+                          <span>Discuss this service</span>
+                          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+                            <line x1="5" y1="12" x2="19" y2="12"></line>
+                            <polyline points="12 5 19 12 12 19"></polyline>
+                          </svg>
+                        </button>
+                      </div>
+                    </div>
+                  </article>
+                </div>
+
+                <!-- Slide 6: WhatsApp Automation -->
+                <div class="swiper-slide" data-slide-index="5">
+                  <article class="service-card" data-service-card>
+                    <div class="card-border-animated" aria-hidden="true"></div>
+                    <div class="card-border-reflection" aria-hidden="true"></div>
+                    <div class="card-spotlight" aria-hidden="true"></div>
+                    <div class="service-card-inner">
+                      <div class="service-card-top-meta">
+                        <div class="service-category-badge">
+                          <span class="badge-dot"></span>
+                          <span>CHAT AUTOMATION</span>
+                        </div>
+                        <span class="service-card-num">// 06</span>
+                      </div>
+                      <div class="service-card-header">
+                        <div class="service-icon-box">
+                          <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"></path>
+                          </svg>
+                        </div>
+                        <h3 class="service-card-title">WhatsApp Automation</h3>
+                      </div>
+                      <p class="service-card-desc">Streamline customer communication with automated responses, lead capture, notifications, and structured messaging workflows.</p>
+                      <div class="service-card-tags">
+                        <span class="service-tag">24/7 Response</span>
+                        <span class="service-tag">Instant Alerts</span>
+                        <span class="service-tag">CRM Sync</span>
+                      </div>
+                      <div class="service-card-footer">
+                        <button class="btn-discuss-service" data-service="WhatsApp Automation">
+                          <span>Discuss this service</span>
+                          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+                            <line x1="5" y1="12" x2="19" y2="12"></line>
+                            <polyline points="12 5 19 12 12 19"></polyline>
+                          </svg>
+                        </button>
+                      </div>
+                    </div>
+                  </article>
+                </div>
+
+                <!-- Slide 7: Digital Marketing and SEO -->
+                <div class="swiper-slide" data-slide-index="6">
+                  <article class="service-card" data-service-card>
+                    <div class="card-border-animated" aria-hidden="true"></div>
+                    <div class="card-border-reflection" aria-hidden="true"></div>
+                    <div class="card-spotlight" aria-hidden="true"></div>
+                    <div class="service-card-inner">
+                      <div class="service-card-top-meta">
+                        <div class="service-category-badge">
+                          <span class="badge-dot"></span>
+                          <span>GROWTH & SEO</span>
+                        </div>
+                        <span class="service-card-num">// 07</span>
+                      </div>
+                      <div class="service-card-header">
+                        <div class="service-icon-box">
+                          <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <polyline points="23 6 13.5 15.5 8.5 10.5 1 18"></polyline>
+                            <polyline points="17 6 23 6 23 12"></polyline>
+                          </svg>
+                        </div>
+                        <h3 class="service-card-title">Digital Marketing and SEO</h3>
+                      </div>
+                      <p class="service-card-desc">Improve online visibility with search engine optimization, strategic digital marketing, and data-informed growth initiatives.</p>
+                      <div class="service-card-tags">
+                        <span class="service-tag">Organic Rankings</span>
+                        <span class="service-tag">Technical Audits</span>
+                        <span class="service-tag">Conversion Rates</span>
+                      </div>
+                      <div class="service-card-footer">
+                        <button class="btn-discuss-service" data-service="Digital Marketing and SEO">
+                          <span>Discuss this service</span>
+                          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+                            <line x1="5" y1="12" x2="19" y2="12"></line>
+                            <polyline points="12 5 19 12 12 19"></polyline>
+                          </svg>
+                        </button>
+                      </div>
+                    </div>
+                  </article>
+                </div>
+
+                <!-- Slide 8: E-commerce Solutions -->
+                <div class="swiper-slide" data-slide-index="7">
+                  <article class="service-card" data-service-card>
+                    <div class="card-border-animated" aria-hidden="true"></div>
+                    <div class="card-border-reflection" aria-hidden="true"></div>
+                    <div class="card-spotlight" aria-hidden="true"></div>
+                    <div class="service-card-inner">
+                      <div class="service-card-top-meta">
+                        <div class="service-category-badge">
+                          <span class="badge-dot"></span>
+                          <span>DIGITAL COMMERCE</span>
+                        </div>
+                        <span class="service-card-num">// 08</span>
+                      </div>
+                      <div class="service-card-header">
+                        <div class="service-icon-box">
+                          <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"></path>
+                            <line x1="3" y1="6" x2="21" y2="6"></line>
+                            <path d="M16 10a4 4 0 0 1-8 0"></path>
+                          </svg>
+                        </div>
+                        <h3 class="service-card-title">E-commerce Solutions</h3>
+                      </div>
+                      <p class="service-card-desc">Launch and improve online stores with product catalogues, shopping carts, order management, and secure payment integrations.</p>
+                      <div class="service-card-tags">
+                        <span class="service-tag">Payment Gateways</span>
+                        <span class="service-tag">Inventory Engine</span>
+                        <span class="service-tag">Frictionless Checkout</span>
+                      </div>
+                      <div class="service-card-footer">
+                        <button class="btn-discuss-service" data-service="E-commerce Solutions">
+                          <span>Discuss this service</span>
+                          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+                            <line x1="5" y1="12" x2="19" y2="12"></line>
+                            <polyline points="12 5 19 12 12 19"></polyline>
+                          </svg>
+                        </button>
+                      </div>
+                    </div>
+                  </article>
+                </div>
+
+                <!-- Slide 9: Business Process Automation -->
+                <div class="swiper-slide" data-slide-index="8">
+                  <article class="service-card" data-service-card>
+                    <div class="card-border-animated" aria-hidden="true"></div>
+                    <div class="card-border-reflection" aria-hidden="true"></div>
+                    <div class="card-spotlight" aria-hidden="true"></div>
+                    <div class="service-card-inner">
+                      <div class="service-card-top-meta">
+                        <div class="service-category-badge">
+                          <span class="badge-dot"></span>
+                          <span>ENTERPRISE WORKFLOWS</span>
+                        </div>
+                        <span class="service-card-num">// 09</span>
+                      </div>
+                      <div class="service-card-header">
+                        <div class="service-icon-box">
+                          <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <line x1="6" y1="3" x2="6" y2="15"></line>
+                            <circle cx="18" cy="6" r="3"></circle>
+                            <circle cx="6" cy="18" r="3"></circle>
+                            <path d="M18 9a9 9 0 0 1-9 9"></path>
+                          </svg>
+                        </div>
+                        <h3 class="service-card-title">Business Process Automation</h3>
+                      </div>
+                      <p class="service-card-desc">Connect everyday business tasks with automated approvals, notifications, reporting, and workflows that save time and reduce manual effort.</p>
+                      <div class="service-card-tags">
+                        <span class="service-tag">Approval Chains</span>
+                        <span class="service-tag">System Sync</span>
+                        <span class="service-tag">Audit Tracking</span>
+                      </div>
+                      <div class="service-card-footer">
+                        <button class="btn-discuss-service" data-service="Business Process Automation">
+                          <span>Discuss this service</span>
+                          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+                            <line x1="5" y1="12" x2="19" y2="12"></line>
+                            <polyline points="12 5 19 12 12 19"></polyline>
+                          </svg>
+                        </button>
+                      </div>
+                    </div>
+                  </article>
+                </div>
+              </div>
+            </div>
+
+            <!-- Custom Navigation Next Button -->
+            <button class="services-nav-btn services-swiper-next" aria-label="Next service" title="Next Service">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+                <polyline points="9 18 15 12 9 6"></polyline>
+              </svg>
+            </button>
+          </div>
+
+          <!-- Bottom Interactive Controls Bar: Counter, Pagination & Interaction Hint -->
+          <div class="services-controls-bar">
+            <!-- Service Counter -->
+            <div class="services-counter" aria-live="polite">
+              <span class="service-counter-current" id="service-counter-current">01</span>
+              <span class="service-counter-sep">/</span>
+              <span class="service-counter-total" id="service-counter-total">09</span>
+            </div>
+
+            <!-- Clickable Swiper Pagination Container -->
+            <div class="services-swiper-pagination" id="services-swiper-pagination"></div>
+
+            <!-- Interaction Hint -->
+            <div class="services-interaction-hint">
+              <span class="hint-desktop">Drag, arrow keys, or buttons</span>
+              <span class="hint-mobile">Swipe cards to explore</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="services-bottom-cta reveal">
+          <a href="#contact" class="btn-secondary">
+            <span>Have a Different Requirement? Let's Discuss</span>
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <line x1="5" y1="12" x2="19" y2="12"></line>
+              <polyline points="12 5 19 12 12 19"></polyline>
+            </svg>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- =======================================================================
+         SECTION 04: TESTIMONIALS
+         ======================================================================= -->
+    <section id="testimonials">
+      <div class="container">
+        <div class="testimonials-header reveal">
+          <div class="section-eyebrow">
+            <span>[ CLIENT EXPERIENCES ]</span>
+          </div>
+          <div class="section-glow-line" aria-hidden="true"></div>
+          <h2 class="section-heading">
+            Good Work. <span class="gold-gradient-text">Real Impact.</span>
+          </h2>
+          <p class="section-subhead" style="margin: 0 auto;">
+            We believe strong partnerships are built on clear communication, dependable execution, and digital solutions that solve real business problems.
+          </p>
+        </div>
+
+        <div class="testimonials-grid">
+          <!-- Testimonial 1 -->
+          <div class="testimonial-card reveal stagger-1">
+            <div>
+              <div class="test-card-top">
+                <span class="test-placeholder-badge">Testimonial placeholder</span>
+                <span class="quote-icon">
+                  <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
+                    <path d="M14.017 21v-7.391c0-5.704 3.731-9.57 8.983-10.609l.995 2.151c-2.432.917-3.995 3.638-3.995 5.849h4v10h-9.983zm-14.017 0v-7.391c0-5.704 3.748-9.57 9-10.609l.996 2.151c-2.433.917-3.996 3.638-3.996 5.849h3.983v10h-9.983z"/>
+                  </svg>
+                </span>
+              </div>
+              <h3 class="test-service-tag">Website Development</h3>
+              <p class="test-text">
+                [Client testimonial placeholder: This space is reserved for approved customer feedback detailing their website redesign, conversion impact, and direct developer communication experience.]
+              </p>
+            </div>
+            <div>
+              <div class="test-stars" aria-label="5 decorative stars">
+                <span>★</span><span>★</span><span>★</span><span>★</span><span>★</span>
+              </div>
+              <div class="test-author-box">
+                <div class="test-avatar">WD</div>
+                <div class="test-author-meta">
+                  <h4>Client Name Placeholder</h4>
+                  <p>Founder / Managing Director</p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Testimonial 2 -->
+          <div class="testimonial-card reveal stagger-2">
+            <div>
+              <div class="test-card-top">
+                <span class="test-placeholder-badge">Testimonial placeholder</span>
+                <span class="quote-icon">
+                  <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
+                    <path d="M14.017 21v-7.391c0-5.704 3.731-9.57 8.983-10.609l.995 2.151c-2.432.917-3.995 3.638-3.995 5.849h4v10h-9.983zm-14.017 0v-7.391c0-5.704 3.748-9.57 9-10.609l.996 2.151c-2.433.917-3.996 3.638-3.996 5.849h3.983v10h-9.983z"/>
+                  </svg>
+                </span>
+              </div>
+              <h3 class="test-service-tag">Business Automation</h3>
+              <p class="test-text">
+                [Client testimonial placeholder: This space is reserved for approved customer feedback highlighting operational time savings, automated WhatsApp lead response, and process integration.]
+              </p>
+            </div>
+            <div>
+              <div class="test-stars" aria-label="5 decorative stars">
+                <span>★</span><span>★</span><span>★</span><span>★</span><span>★</span>
+              </div>
+              <div class="test-author-box">
+                <div class="test-avatar">BA</div>
+                <div class="test-author-meta">
+                  <h4>Client Name Placeholder</h4>
+                  <p>Operations Lead / Business Owner</p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Testimonial 3 -->
+          <div class="testimonial-card reveal stagger-3">
+            <div>
+              <div class="test-card-top">
+                <span class="test-placeholder-badge">Testimonial placeholder</span>
+                <span class="quote-icon">
+                  <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
+                    <path d="M14.017 21v-7.391c0-5.704 3.731-9.57 8.983-10.609l.995 2.151c-2.432.917-3.995 3.638-3.995 5.849h4v10h-9.983zm-14.017 0v-7.391c0-5.704 3.748-9.57 9-10.609l.996 2.151c-2.433.917-3.996 3.638-3.996 5.849h3.983v10h-9.983z"/>
+                  </svg>
+                </span>
+              </div>
+              <h3 class="test-service-tag">Custom Software</h3>
+              <p class="test-text">
+                [Client testimonial placeholder: This space is reserved for approved customer feedback reflecting tailored software architecture, on-time delivery, and honest milestone execution.]
+              </p>
+            </div>
+            <div>
+              <div class="test-stars" aria-label="5 decorative stars">
+                <span>★</span><span>★</span><span>★</span><span>★</span><span>★</span>
+              </div>
+              <div class="test-author-box">
+                <div class="test-avatar">CS</div>
+                <div class="test-author-meta">
+                  <h4>Client Name Placeholder</h4>
+                  <p>Product Lead / Technology Head</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- =======================================================================
+         SECTION 05: FAQ
+         ======================================================================= -->
+    <section id="faq">
+      <div class="container">
+        <div class="faq-header reveal">
+          <div class="section-eyebrow">
+            <span>[ FREQUENTLY ASKED QUESTIONS ]</span>
+          </div>
+          <div class="section-glow-line" aria-hidden="true"></div>
+          <h2 class="section-heading">
+            Questions Before <span class="gold-gradient-text">We Build?</span>
+          </h2>
+          <p class="section-subhead" style="margin: 0 auto;">
+            Here are a few things to know about working with History Maker Tech.
+          </p>
+        </div>
+
+        <div class="faq-accordion reveal">
+          <!-- FAQ 1 -->
+          <div class="faq-item is-open">
+            <button class="faq-question-btn" aria-expanded="true">
+              <span>What services does History Maker Tech provide?</span>
+              <span class="faq-chevron">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                  <polyline points="6 9 12 15 18 9"></polyline>
+                </svg>
+              </span>
+            </button>
+            <div class="faq-answer-pane" style="max-height: 200px;">
+              <div class="faq-answer-inner">
+                We provide website development, custom software development, mobile app development, CRM systems, AI automation, WhatsApp automation, digital marketing and SEO, e-commerce solutions, and business process automation.
+              </div>
+            </div>
+          </div>
+
+          <!-- FAQ 2 -->
+          <div class="faq-item">
+            <button class="faq-question-btn" aria-expanded="false">
+              <span>How does your direct-to-developer approach work?</span>
+              <span class="faq-chevron">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                  <polyline points="6 9 12 15 18 9"></polyline>
+                </svg>
+              </span>
+            </button>
+            <div class="faq-answer-pane">
+              <div class="faq-answer-inner">
+                You communicate directly with the people involved in designing and building your solution. This helps reduce unnecessary communication layers, clarify technical decisions, and keep execution focused on your business objectives.
+              </div>
+            </div>
+          </div>
+
+          <!-- FAQ 3 -->
+          <div class="faq-item">
+            <button class="faq-question-btn" aria-expanded="false">
+              <span>Can you build a solution specifically for my business?</span>
+              <span class="faq-chevron">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                  <polyline points="6 9 12 15 18 9"></polyline>
+                </svg>
+              </span>
+            </button>
+            <div class="faq-answer-pane">
+              <div class="faq-answer-inner">
+                Yes. We can plan and develop solutions around your business requirements, operational workflows, customer needs, and growth goals. The scope and technical approach are defined during the initial discussion.
+              </div>
+            </div>
+          </div>
+
+          <!-- FAQ 4 -->
+          <div class="faq-item">
+            <button class="faq-question-btn" aria-expanded="false">
+              <span>How much does a website or software project cost?</span>
+              <span class="faq-chevron">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                  <polyline points="6 9 12 15 18 9"></polyline>
+                </svg>
+              </span>
+            </button>
+            <div class="faq-answer-pane">
+              <div class="faq-answer-inner">
+                Pricing depends on the scope, complexity, functionality, integrations, and delivery requirements. We discuss the requirements and provide a project-specific quotation before development begins.
+              </div>
+            </div>
+          </div>
+
+          <!-- FAQ 5 -->
+          <div class="faq-item">
+            <button class="faq-question-btn" aria-expanded="false">
+              <span>How long will my project take?</span>
+              <span class="faq-chevron">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                  <polyline points="6 9 12 15 18 9"></polyline>
+                </svg>
+              </span>
+            </button>
+            <div class="faq-answer-pane">
+              <div class="faq-answer-inner">
+                The timeline depends on the project's size, requirements, integrations, and review process. We agree on milestones and expected delivery dates after understanding the scope.
+              </div>
+            </div>
+          </div>
+
+          <!-- FAQ 6 -->
+          <div class="faq-item">
+            <button class="faq-question-btn" aria-expanded="false">
+              <span>Can you automate my WhatsApp communication and business processes?</span>
+              <span class="faq-chevron">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                  <polyline points="6 9 12 15 18 9"></polyline>
+                </svg>
+              </span>
+            </button>
+            <div class="faq-answer-pane">
+              <div class="faq-answer-inner">
+                We can assess your workflow and identify suitable automation options for customer enquiries, notifications, lead capture, follow-ups, and other repetitive tasks. Available functionality depends on the chosen platforms and their integration requirements.
+              </div>
+            </div>
+          </div>
+
+          <!-- FAQ 7 -->
+          <div class="faq-item">
+            <button class="faq-question-btn" aria-expanded="false">
+              <span>Will I receive support after delivery?</span>
+              <span class="faq-chevron">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                  <polyline points="6 9 12 15 18 9"></polyline>
+                </svg>
+              </span>
+            </button>
+            <div class="faq-answer-pane">
+              <div class="faq-answer-inner">
+                Support and maintenance can be discussed as part of your project scope. The available support arrangements, duration, and costs will be clearly communicated before the project starts.
+              </div>
+            </div>
+          </div>
+
+          <!-- FAQ 8 -->
+          <div class="faq-item">
+            <button class="faq-question-btn" aria-expanded="false">
+              <span>How do I start a project with History Maker Tech?</span>
+              <span class="faq-chevron">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                  <polyline points="6 9 12 15 18 9"></polyline>
+                </svg>
+              </span>
+            </button>
+            <div class="faq-answer-pane">
+              <div class="faq-answer-inner">
+                Contact us through WhatsApp, phone, or email using the details provided on this website. Share your idea, requirements, and goals, and we can discuss the next steps.
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- =======================================================================
+         SECTION 06: CONTACT
+         ======================================================================= -->
+    <section id="contact">
+      <div class="container">
+        <div class="contact-grid">
+          <!-- Left Column: Contact Methods -->
+          <div class="contact-info-col reveal">
+            <div>
+              <div class="section-eyebrow">
+                <span>[ LET'S BUILD SOMETHING MEANINGFUL ]</span>
+              </div>
+              <h2 class="section-heading">
+                Have an Idea <span class="gold-gradient-text">Worth Building?</span>
+              </h2>
+              <p class="section-subhead">
+                Tell us what you want to create, improve, or automate. We'll discuss your requirements and explore a practical digital solution for your business.
+              </p>
+            </div>
+
+            <!-- WhatsApp Card -->
+            <a href="https://wa.me/918903411738?text=Hello%20History%20Maker%20Tech%2C%20I%20would%20like%20to%20discuss%20a%20digital%20solution%20for%20my%20business."
+               target="_blank"
+               rel="noopener noreferrer"
+               class="contact-method-card">
+              <div class="contact-icon-box">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"></path>
+                </svg>
+              </div>
+              <div class="contact-method-meta">
+                <div class="contact-method-label">WhatsApp Direct</div>
+                <div class="contact-method-value">89034 11738</div>
+              </div>
+              <div class="contact-badge-status">Chat Now ↗</div>
+            </a>
+
+            <!-- Phone Card -->
+            <a href="tel:+919476397228" class="contact-method-card">
+              <div class="contact-icon-box">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path>
+                </svg>
+              </div>
+              <div class="contact-method-meta">
+                <div class="contact-method-label">Telephone</div>
+                <div class="contact-method-value">9476397228</div>
+              </div>
+              <div class="contact-badge-status">Call Us ↗</div>
+            </a>
+
+            <!-- Email Placeholder -->
+            <div class="contact-method-card disabled" title="Email address to be added soon">
+              <div class="contact-icon-box" style="background: rgba(255, 255, 255, 0.05); color: var(--color-text-muted); border-color: rgba(255, 255, 255, 0.1);">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
+                  <polyline points="22,6 12,13 2,6"></polyline>
+                </svg>
+              </div>
+              <div class="contact-method-meta">
+                <div class="contact-method-label">Official Email</div>
+                <div class="contact-method-value" style="color: var(--color-text-muted);">Email address to be added</div>
+              </div>
+              <div class="contact-badge-status">Pending</div>
+            </div>
+
+            <!-- Instagram Placeholder -->
+            <div class="contact-method-card disabled" title="Instagram profile to be added soon">
+              <div class="contact-icon-box" style="background: rgba(255, 255, 255, 0.05); color: var(--color-text-muted); border-color: rgba(255, 255, 255, 0.1);">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect>
+                  <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path>
+                  <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line>
+                </svg>
+              </div>
+              <div class="contact-method-meta">
+                <div class="contact-method-label">Instagram Profile</div>
+                <div class="contact-method-value" style="color: var(--color-text-muted);">Instagram profile to be added</div>
+              </div>
+              <div class="contact-badge-status">Pending</div>
+            </div>
+          </div>
+
+          <!-- Right Column: Interactive Inquiry Form -->
+          <div class="contact-form-card reveal stagger-1">
+            <h3 class="form-heading">Project Inquiry Form</h3>
+            <p class="form-subhead">Prepare your project details for rapid developer review and WhatsApp handoff.</p>
+
+            <form id="project-inquiry-form" novalidate>
+              <div class="form-group-row">
+                <div class="form-group">
+                  <label for="contact-name" class="form-label">
+                    <span>Full Name</span>
+                    <span class="required-star">*</span>
+                  </label>
+                  <input type="text" id="contact-name" class="form-input" placeholder="e.g. Rajesh Kumar" required>
+                  <span class="form-error-msg" id="name-error">Please enter your full name.</span>
+                </div>
+
+                <div class="form-group">
+                  <label for="contact-email" class="form-label">
+                    <span>Email Address</span>
+                    <span class="required-star">*</span>
+                  </label>
+                  <input type="email" id="contact-email" class="form-input" placeholder="rajesh@company.com" required>
+                  <span class="form-error-msg" id="email-error">Please enter a valid email address.</span>
+                </div>
+              </div>
+
+              <div class="form-group-row">
+                <div class="form-group">
+                  <label for="contact-phone" class="form-label">
+                    <span>Phone Number</span>
+                    <span style="font-size: 0.76rem; color: var(--color-text-muted);">(optional)</span>
+                  </label>
+                  <input type="tel" id="contact-phone" class="form-input" placeholder="e.g. +91 98765 43210">
+                </div>
+
+                <div class="form-group">
+                  <label for="contact-service" class="form-label">
+                    <span>Service Interested In</span>
+                    <span class="required-star">*</span>
+                  </label>
+                  <select id="contact-service" class="form-select" required>
+                    <option value="" disabled selected>Select a primary service</option>
+                    <option value="Website Development">Website Development</option>
+                    <option value="Custom Software Development">Custom Software Development</option>
+                    <option value="Mobile App Development">Mobile App Development</option>
+                    <option value="CRM Development">CRM Development</option>
+                    <option value="AI Automation Solutions">AI Automation Solutions</option>
+                    <option value="WhatsApp Automation">WhatsApp Automation</option>
+                    <option value="Digital Marketing and SEO">Digital Marketing and SEO</option>
+                    <option value="E-commerce Solutions">E-commerce Solutions</option>
+                    <option value="Business Process Automation">Business Process Automation</option>
+                    <option value="Other">Other</option>
+                  </select>
+                  <span class="form-error-msg" id="service-error">Please select a service.</span>
+                </div>
+              </div>
+
+              <div class="form-group">
+                <label for="contact-budget" class="form-label">
+                  <span>Project Budget (INR)</span>
+                  <span style="font-size: 0.76rem; color: var(--color-text-muted);">(optional)</span>
+                </label>
+                <select id="contact-budget" class="form-select">
+                  <option value="Not decided yet" selected>Not decided yet</option>
+                  <option value="Under ₹10,000">Under ₹10,000</option>
+                  <option value="₹10,000–₹25,000">₹10,000–₹25,000</option>
+                  <option value="₹25,000–₹50,000">₹25,000–₹50,000</option>
+                  <option value="₹50,000–₹1,00,000">₹50,000–₹1,00,000</option>
+                  <option value="Above ₹1,00,000">Above ₹1,00,000</option>
+                </select>
+              </div>
+
+              <div class="form-group">
+                <label for="contact-details" class="form-label">
+                  <span>Project Details</span>
+                  <span class="required-star">*</span>
+                </label>
+                <textarea id="contact-details" class="form-textarea" placeholder="Tell us about your objectives, timeline, workflow requirements, or challenges you're looking to solve..." required></textarea>
+                <span class="form-error-msg" id="details-error">Please describe your project requirements.</span>
+              </div>
+
+              <div class="form-consent-box">
+                <input type="checkbox" id="contact-consent" required>
+                <label for="contact-consent" class="form-consent-text">
+                  I acknowledge and agree that the submitted information may be used by History Maker Tech to review and respond to this project inquiry.
+                </label>
+              </div>
+              <span class="form-error-msg" id="consent-error" style="margin-top: -18px; margin-bottom: 16px;">You must agree to proceed with the inquiry.</span>
+
+              <button type="submit" class="btn-gold" style="width: 100%;">
+                <span>Prepare My Inquiry</span>
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                  <line x1="5" y1="12" x2="19" y2="12"></line>
+                  <polyline points="12 5 19 12 12 19"></polyline>
+                </svg>
+              </button>
+
+              <div class="form-privacy-note">
+                Your information is used to help us understand your project enquiry.
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Form Prepared WhatsApp / Copy Modal -->
+    <div id="inquiry-modal" role="dialog" aria-modal="true" aria-labelledby="modal-title">
+      <div class="inquiry-modal-card">
+        <button id="modal-close-btn" class="modal-close-btn" aria-label="Close dialog">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+            <line x1="18" y1="6" x2="6" y2="18"></line>
+            <line x1="6" y1="6" x2="18" y2="18"></line>
+          </svg>
+        </button>
+
+        <div style="display: flex; align-items: center; gap: 12px; margin-bottom: 12px;">
+          <div style="width: 12px; height: 12px; border-radius: 50%; background: var(--color-gold);"></div>
+          <span class="section-eyebrow" style="margin: 0;">[ INQUIRY PREPARED ]</span>
+        </div>
+
+        <h3 id="modal-title" style="font-family: var(--font-raleway); font-size: 1.55rem; color: var(--color-white); margin-bottom: 10px;">
+          Ready to Connect via WhatsApp
+        </h3>
+
+        <p style="font-size: 0.92rem; color: var(--color-text-muted); line-height: 1.6;">
+          Your inquiry has been compiled into a structured message. Because no third-party server form intermediary is used, please send this directly to our developer team on WhatsApp to finalize your inquiry.
+        </p>
+
+        <pre class="inquiry-preview-box" id="inquiry-preview-text"></pre>
+
+        <div class="modal-actions">
+          <a id="modal-whatsapp-link" href="#" target="_blank" rel="noopener noreferrer" class="btn-gold" style="flex: 1;">
+            <span>Send on WhatsApp</span>
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"></path>
+            </svg>
+          </a>
+
+          <button id="modal-copy-btn" class="btn-secondary" style="flex: 1;">
+            <span id="copy-btn-label">Copy Message</span>
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect>
+              <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path>
+            </svg>
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <!-- =======================================================================
+         12. STUDIO CONTROLS DRAWER
+         ======================================================================= -->
+    <div id="studio-drawer-backdrop" class="studio-drawer-backdrop"></div>
+    <div id="studio-drawer" role="dialog" aria-modal="true" aria-label="Studio Controls">
+      <div>
+        <div class="studio-drawer-header">
+          <div>
+            <span class="section-eyebrow" style="margin: 0; font-size: 0.72rem;">[ VISUAL ENGINE ]</span>
+            <h3 style="font-family: var(--font-raleway); font-size: 1.35rem; color: var(--color-white); font-weight: 700;">STUDIO CONTROLS</h3>
+          </div>
+          <button id="studio-drawer-close-btn" class="btn-icon-glass" aria-label="Close controls">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <line x1="18" y1="6" x2="6" y2="18"></line>
+              <line x1="6" y1="6" x2="18" y2="18"></line>
+            </svg>
+          </button>
+        </div>
+
+        <p style="font-size: 0.88rem; color: var(--color-text-muted); line-height: 1.6; margin-bottom: 22px;">
+          Choose the visual character of your 3D sphere field. As you scroll, the scene transforms through gravity, form, and release.
+        </p>
+
+        <!-- Palette List -->
+        <div class="palette-list">
+          <!-- Palette 1: Royal Blue & Gold -->
+          <div class="palette-card active" data-palette="royalBlueGold">
+            <div class="palette-top">
+              <span class="palette-name">Royal Blue & Gold</span>
+              <div class="palette-swatches">
+                <span class="swatch-circle" style="background: #2F69FF;"></span>
+                <span class="swatch-circle" style="background: #D6A83F;"></span>
+                <span class="swatch-circle" style="background: #F6F7FA;"></span>
+              </div>
+            </div>
+            <p class="palette-desc">Signature cobalt spheres with metallic gold accents.</p>
+          </div>
+
+          <!-- Palette 2: Gold & Onyx -->
+          <div class="palette-card" data-palette="goldOnyx">
+            <div class="palette-top">
+              <span class="palette-name">Gold & Onyx</span>
+              <div class="palette-swatches">
+                <span class="swatch-circle" style="background: #D6A83F;"></span>
+                <span class="swatch-circle" style="background: #FFE29A;"></span>
+                <span class="swatch-circle" style="background: #11151E;"></span>
+              </div>
+            </div>
+            <p class="palette-desc">Luxurious gold spheres against deep black.</p>
+          </div>
+
+          <!-- Palette 3: Pearl & Midnight -->
+          <div class="palette-card" data-palette="pearlMidnight">
+            <div class="palette-top">
+              <span class="palette-name">Pearl & Midnight</span>
+              <div class="palette-swatches">
+                <span class="swatch-circle" style="background: #F6F7FA;"></span>
+                <span class="swatch-circle" style="background: #2F69FF;"></span>
+                <span class="swatch-circle" style="background: #0B101D;"></span>
+              </div>
+            </div>
+            <p class="palette-desc">Pearl-white spheres with cool blue reflections.</p>
+          </div>
+
+          <!-- Palette 4: Arctic Blue & Crystal -->
+          <div class="palette-card" data-palette="arcticCrystal">
+            <div class="palette-top">
+              <span class="palette-name">Arctic Blue & Crystal</span>
+              <div class="palette-swatches">
+                <span class="swatch-circle" style="background: #96E5FF;"></span>
+                <span class="swatch-circle" style="background: #2F69FF;"></span>
+                <span class="swatch-circle" style="background: #FFFFFF;"></span>
+              </div>
+            </div>
+            <p class="palette-desc">Cool translucent blue spheres with a crystal sheen.</p>
+          </div>
+        </div>
+
+        <button id="reset-palette-btn" class="btn-secondary" style="width: 100%; justify-content: center;">
+          <span>Reset Defaults</span>
+        </button>
+      </div>
+
+      <div class="studio-engine-badges">
+        <div class="engine-badge">
+          <span>RENDER ENGINE</span>
+          <span>THREE.JS WEBGL</span>
+        </div>
+        <div class="engine-badge">
+          <span>DYNAMICS SOLVER</span>
+          <span>3D COLLISION VERLET</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- =======================================================================
+         13. FOOTER
+         ======================================================================= -->
+    <footer id="site-footer">
+      <!-- Marquee Ticker -->
+      <div class="marquee-container" aria-hidden="true">
+        <div class="marquee-track">
+          <div class="marquee-item"><span>Ideas</span><span class="marquee-dot"></span><span>Technology</span><span class="marquee-dot"></span><span>Innovation</span><span class="marquee-dot"></span><span>Growth</span><span class="marquee-dot"></span></div>
+          <div class="marquee-item"><span>Ideas</span><span class="marquee-dot"></span><span>Technology</span><span class="marquee-dot"></span><span>Innovation</span><span class="marquee-dot"></span><span>Growth</span><span class="marquee-dot"></span></div>
+          <div class="marquee-item"><span>Ideas</span><span class="marquee-dot"></span><span>Technology</span><span class="marquee-dot"></span><span>Innovation</span><span class="marquee-dot"></span><span>Growth</span><span class="marquee-dot"></span></div>
+          <div class="marquee-item"><span>Ideas</span><span class="marquee-dot"></span><span>Technology</span><span class="marquee-dot"></span><span>Innovation</span><span class="marquee-dot"></span><span>Growth</span><span class="marquee-dot"></span></div>
+        </div>
+      </div>
+
+      <div class="container footer-main">
+        <!-- Footer CTA -->
+        <div class="footer-cta-block reveal">
+          <div class="section-eyebrow">
+            <span>[ LET'S COLLABORATE ]</span>
+          </div>
+          <h2 class="section-heading" style="margin-bottom: 16px;">
+            Have an Idea That <span class="gold-gradient-text">Deserves to Grow?</span>
+          </h2>
+          <p class="section-subhead" style="margin: 0 auto 32px;">
+            Let's turn your vision into a practical digital solution built around your business.
+          </p>
+          <a href="#contact" class="btn-gold">
+            <span>Start a Conversation</span>
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+              <line x1="5" y1="12" x2="19" y2="12"></line>
+              <polyline points="12 5 19 12 12 19"></polyline>
+            </svg>
+          </a>
+        </div>
+
+        <!-- Footer Columns -->
+        <div class="footer-columns-grid">
+          <div class="footer-brand-col">
+            <a href="#home">
+              <img src="assets/images/logo.png"
+                   alt="History Maker Tech Logo"
+                   class="footer-logo-img"
+                   onerror="this.onerror=null;this.src='assets/images/logo.jpg';">
+            </a>
+            <div class="footer-slogan">IDEAS → TECHNOLOGY → GROWTH</div>
+            <p style="font-size: 0.9rem; color: var(--color-text-muted); line-height: 1.6; max-width: 320px;">
+              Direct-to-Developer Engineering. Zero Agency Bloat. Practical digital solutions built for scalable modern enterprise.
+            </p>
+          </div>
+
+          <div>
+            <h4 class="footer-col-title">Company</h4>
+            <ul class="footer-links-list">
+              <li><a href="#home">Home</a></li>
+              <li><a href="#about">About</a></li>
+              <li><a href="#services">Services</a></li>
+              <li><a href="#contact">Contact</a></li>
+            </ul>
+          </div>
+
+          <div>
+            <h4 class="footer-col-title">Solutions</h4>
+            <ul class="footer-links-list">
+              <li><a href="#services">Website Development</a></li>
+              <li><a href="#services">Custom Software</a></li>
+              <li><a href="#services">Mobile Apps</a></li>
+              <li><a href="#services">AI Automation</a></li>
+              <li><a href="#services">CRM Development</a></li>
+            </ul>
+          </div>
+
+          <div>
+            <h4 class="footer-col-title">Connect</h4>
+            <ul class="footer-links-list">
+              <li><a href="https://wa.me/918903411738" target="_blank" rel="noopener noreferrer">WhatsApp: 89034 11738 ↗</a></li>
+              <li><a href="tel:+919476397228">Call Us: 9476397228 ↗</a></li>
+              <li><span class="disabled-link" title="Email address to be added soon">Email (Pending)</span></li>
+              <li><span class="disabled-link" title="Instagram profile to be added soon">Instagram (Pending)</span></li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="footer-bottom">
+          <div class="copyright-text">
+            © 2026 History Maker Tech. All rights reserved.
+          </div>
+          <div style="font-family: var(--font-mono); font-size: 0.78rem; color: var(--color-text-muted);">
+            DIRECT ACCESS · TRANSPARENT PRICING · ZERO BLOAT
+          </div>
+        </div>
+      </div>
+    </footer>
+
+  </div>
+
+  <script type="module" src="./assets/js/main.js"></script>
+</body>
+</html>

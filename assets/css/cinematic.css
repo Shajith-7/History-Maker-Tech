@@ -1,0 +1,188 @@
+/* Cinematic scroll, glow, and interaction layer */
+
+html.js-cinematic {
+  scroll-behavior: auto;
+}
+
+html.js-cinematic body {
+  cursor: none;
+}
+
+html.js-cinematic .reveal {
+  opacity: 1;
+  transform: none;
+  filter: none;
+  transition: none;
+  will-change: auto;
+}
+
+.scroll-progress {
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 2px;
+  width: 0%;
+  z-index: 4000;
+  pointer-events: none;
+  background: linear-gradient(90deg, #2F69FF 0%, #D6A83F 55%, #FFE29A 100%);
+  box-shadow: 0 0 16px rgba(214, 168, 63, 0.75), 0 0 28px rgba(47, 105, 255, 0.35);
+}
+
+.ambient-glow {
+  position: fixed;
+  pointer-events: none;
+  z-index: 1;
+  border-radius: 50%;
+  filter: blur(80px);
+  mix-blend-mode: screen;
+  opacity: 0.42;
+  will-change: transform, opacity;
+}
+
+.ambient-glow.glow-a {
+  width: min(48vw, 560px);
+  height: min(48vw, 560px);
+  background: radial-gradient(circle, rgba(47, 105, 255, 0.38) 0%, transparent 70%);
+  top: 8%;
+  left: 52%;
+}
+
+.ambient-glow.glow-b {
+  width: min(42vw, 480px);
+  height: min(42vw, 480px);
+  background: radial-gradient(circle, rgba(214, 168, 63, 0.28) 0%, transparent 70%);
+  bottom: 6%;
+  left: 8%;
+}
+
+.cinematic-cursor {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 12px;
+  height: 12px;
+  margin: -6px 0 0 -6px;
+  border-radius: 50%;
+  background: #FFE29A;
+  box-shadow: 0 0 18px rgba(214, 168, 63, 0.95), 0 0 36px rgba(47, 105, 255, 0.4);
+  pointer-events: none;
+  z-index: 5000;
+  mix-blend-mode: screen;
+  transform: translate3d(-100px, -100px, 0);
+  will-change: transform;
+}
+
+.cinematic-cursor-ring {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 42px;
+  height: 42px;
+  margin: -21px 0 0 -21px;
+  border-radius: 50%;
+  border: 1px solid rgba(214, 168, 63, 0.45);
+  pointer-events: none;
+  z-index: 4999;
+  transform: translate3d(-100px, -100px, 0);
+  transition: width 0.25s ease, height 0.25s ease, margin 0.25s ease, border-color 0.25s ease, background 0.25s ease;
+  will-change: transform;
+}
+
+.cinematic-cursor-ring.is-hover {
+  width: 68px;
+  height: 68px;
+  margin: -34px 0 0 -34px;
+  border-color: rgba(255, 226, 154, 0.7);
+  background: rgba(214, 168, 63, 0.06);
+}
+
+.section-glow-line {
+  height: 1px;
+  width: 100%;
+  max-width: 280px;
+  margin: 0 auto 28px;
+  background: linear-gradient(90deg, transparent, rgba(214, 168, 63, 0.85), transparent);
+  box-shadow: 0 0 18px rgba(214, 168, 63, 0.45);
+}
+
+#site-header {
+  box-shadow: 0 0 0 rgba(214, 168, 63, 0);
+}
+
+#site-header.scrolled {
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.6), 0 0 24px rgba(214, 168, 63, 0.08);
+}
+
+.btn-gold {
+  box-shadow: 0 4px 20px rgba(214, 168, 63, 0.35), 0 0 28px rgba(214, 168, 63, 0.18);
+}
+
+.btn-gold:hover {
+  box-shadow: 0 8px 32px rgba(214, 168, 63, 0.6), 0 0 40px rgba(214, 168, 63, 0.28);
+}
+
+.btn-secondary:hover {
+  box-shadow: 0 0 24px rgba(47, 105, 255, 0.18), 0 0 18px rgba(214, 168, 63, 0.12);
+}
+
+.nav-item a.active {
+  text-shadow: 0 0 18px rgba(214, 168, 63, 0.45);
+}
+
+.vm-card,
+.testimonial-card,
+.contact-form-card,
+.contact-method-card,
+.faq-item,
+.service-card {
+  transition: transform 0.55s cubic-bezier(0.16, 1, 0.3, 1),
+              border-color 0.45s ease,
+              box-shadow 0.45s ease;
+}
+
+.vm-card:hover,
+.testimonial-card:hover,
+.contact-form-card:hover,
+.faq-item.is-open {
+  box-shadow: 0 18px 40px rgba(0, 0, 0, 0.4), 0 0 32px rgba(214, 168, 63, 0.12);
+}
+
+.gold-gradient-text {
+  filter: drop-shadow(0 0 14px rgba(214, 168, 63, 0.28));
+}
+
+.hero-heading {
+  letter-spacing: -0.03em;
+}
+
+#webgl-canvas {
+  filter: saturate(1.08);
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .magnetic {
+    transition: transform 0.18s ease-out;
+  }
+}
+
+@media (pointer: coarse), (max-width: 900px) {
+  html.js-cinematic body {
+    cursor: auto;
+  }
+  .cinematic-cursor,
+  .cinematic-cursor-ring {
+    display: none !important;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html.js-cinematic body {
+    cursor: auto;
+  }
+  .cinematic-cursor,
+  .cinematic-cursor-ring,
+  .ambient-glow,
+  .scroll-progress {
+    display: none !important;
+  }
+}
