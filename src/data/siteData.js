@@ -16,10 +16,9 @@ export const NAV_LINKS = [
   { label: "Home", href: "#home" },
   { label: "About", href: "#about" },
   { label: "Services", href: "#services" },
+  { label: "Delivered Projects", href: "#projects" },
+  { label: "Courses", href: "#courses" },
   { label: "Testimonials", href: "#testimonials" },
-  { label: "Process", href: "#process" },
-  { label: "Work", href: "#work" },
-  { label: "Tech Stack", href: "#tech-stack" },
   { label: "FAQ", href: "#faq" },
   { label: "Contact", href: "#contact" }
 ];

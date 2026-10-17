@@ -244,10 +244,10 @@ export default function About() {
                 rel="noopener noreferrer"
                 className="btn-gold magnetic"
               >
-                <span>Talk With Our Developers ↗</span>
+                <span>Talk With Our Developers</span>
               </a>
               <a href="#services" className="about-secondary-link">
-                <span>Explore All Services ↓</span>
+                <span>Explore All Services</span>
               </a>
             </div>
           </div>

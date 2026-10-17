@@ -17,11 +17,7 @@ export default function Footer() {
             rel="noopener noreferrer"
             className="btn-gold magnetic"
           >
-            <span>Talk With Us on WhatsApp ↗</span>
-            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
-              <line x1="5" y1="12" x2="19" y2="12"></line>
-              <polyline points="12 5 19 12 12 19"></polyline>
-            </svg>
+            <span>Talk With Us on WhatsApp</span>
           </a>
         </div>
 
@@ -51,6 +47,8 @@ export default function Footer() {
               <li><a href="#home">Home</a></li>
               <li><a href="#about">About</a></li>
               <li><a href="#services">Services</a></li>
+              <li><a href="#projects">Delivered Projects</a></li>
+              <li><a href="#courses">Courses</a></li>
               <li><a href="#testimonials">Testimonials</a></li>
               <li><a href="#faq">FAQ</a></li>
               <li><a href="#contact">Contact</a></li>
@@ -78,17 +76,17 @@ export default function Footer() {
                   target="_blank"
                   rel="noopener noreferrer"
                 >
-                  WhatsApp: {CONFIG.displayWhatsapp} ↗
+                  WhatsApp: {CONFIG.displayWhatsapp}
                 </a>
               </li>
               <li>
                 <a href={`tel:${CONFIG.phoneNumber}`}>
-                  Phone: {CONFIG.displayPhone} ↗
+                  Phone: {CONFIG.displayPhone}
                 </a>
               </li>
               <li>
                 <a href="mailto:contact@historymakertech.com">
-                  Email: contact@historymakertech.com ↗
+                  Email: contact@historymakertech.com
                 </a>
               </li>
               <li style={{ color: 'var(--color-text-muted)', fontSize: '0.85rem', paddingTop: '4px' }}>
