@@ -1,255 +1,165 @@
-import React, { useRef, useState } from 'react';
+import React from 'react';
 import { CONFIG } from '../data/siteData';
 
-const COMPANY_PILLARS = [
+const CORE_METRICS = [
+  { value: "100%", label: "Direct Developer Access", sub: "Zero account manager silos" },
+  { value: "Zero", label: "Middlemen Overhead", sub: "Direct milestone pricing" },
+  { value: "2.5x", label: "Faster Sprint Velocity", sub: "Spec-to-deployment cadence" },
+  { value: "100%", label: "Code & IP Ownership", sub: "Full repository rights" }
+];
+
+const ARCHITECTURAL_PILLARS = [
   {
     num: "01",
-    badge: "ENGINEERING & AUTOMATION",
-    title: "Web, Mobile App, CRM & AI Automation",
-    subtitle: "Custom Digital Solutions · Intelligent Software",
-    desc: "We engineer high-performance web platforms, native iOS & Android applications, tailored CRM pipelines, and intelligent AI automation workflows designed to streamline operations and drive business growth.",
-    capabilities: [
-      "Website & Custom Web Applications",
-      "Native iOS & Android Mobile Apps",
-      "Tailored CRM & Pipeline Systems",
-      "AI Automations & Intelligent Workflows"
-    ],
-    tags: ["Web Engineering", "iOS & Android", "Custom CRM", "AI Automations", "Cloud APIs"],
+    title: "Direct Senior Engineering",
+    desc: "Collaborate directly with the engineers architecting and writing your software — zero account managers, zero telephone games, and immediate technical execution.",
+    tag: "Direct Access",
     icon: (
-      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-        <polygon points="12 2 2 7 12 12 22 7 12 2"></polygon>
-        <polyline points="2 17 12 22 22 17"></polyline>
-        <polyline points="2 12 12 17 22 12"></polyline>
+      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+        <polyline points="16 18 22 12 16 6" />
+        <polyline points="8 6 2 12 8 18" />
       </svg>
     )
   },
   {
     num: "02",
-    badge: "GROWTH & ENTERPRISE SCALE",
-    title: "Digital Marketing, E-Commerce, SEO & Process Automation",
-    subtitle: "Revenue Expansion · Operational Excellence",
-    desc: "Accelerate your market visibility and conversion velocity. We deploy data-informed digital marketing, high-ranking SEO strategies, complete e-commerce stores, automated WhatsApp funnels, and enterprise process automations.",
-    capabilities: [
-      "Digital Marketing & Growth Campaigns",
-      "Search Engine Optimization (SEO)",
-      "High-Converting E-Commerce Stores",
-      "Business Process & WhatsApp Automation"
-    ],
-    tags: ["Digital Marketing", "SEO Strategy", "E-Commerce", "Process Automation", "WhatsApp Bots"],
+    title: "Full-Spectrum Architecture",
+    desc: "End-to-end engineering covering high-performance web applications, native iOS & Android apps, and custom enterprise CRM platforms built for scale.",
+    tag: "Web · Mobile · CRM",
     icon: (
-      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-        <circle cx="12" cy="12" r="10"></circle>
-        <line x1="2" y1="12" x2="22" y2="12"></line>
-        <path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"></path>
+      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+        <polygon points="12 2 2 7 12 12 22 7 12 2" />
+        <polyline points="2 17 12 22 22 17" />
+        <polyline points="2 12 12 17 22 12" />
+      </svg>
+    )
+  },
+  {
+    num: "03",
+    title: "Practical AI & Automation",
+    desc: "Automate repetitive business workflows with smart WhatsApp bots, autonomous data funnels, and enterprise API integrations that work 24/7.",
+    tag: "Intelligent Workflows",
+    icon: (
+      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+        <circle cx="12" cy="12" r="3" />
+        <path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z" />
+      </svg>
+    )
+  },
+  {
+    num: "04",
+    title: "100% IP & Asset Ownership",
+    desc: "Clean milestone economics with unconditional transfer of all source repositories, architecture documentation, design files, and production servers.",
+    tag: "Total IP Rights",
+    icon: (
+      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+        <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" />
+        <polyline points="9 12 11 14 15 10" />
       </svg>
     )
   }
 ];
 
-const COMPANY_KEY_POINTS = [
-  {
-    title: "Direct Senior Developer Access",
-    desc: "Collaborate directly with the engineers writing your code — zero account managers, zero telephone games, and immediate technical execution."
-  },
-  {
-    title: "Full-Spectrum Digital Engineering",
-    desc: "End-to-end development covering modern web apps, native iOS/Android applications, and bespoke CRM architectures built for scale."
-  },
-  {
-    title: "Practical AI & Process Automation",
-    desc: "Eliminate repetitive manual tasks with automated WhatsApp routing, intelligent customer pipelines, and backend system integrations."
-  },
-  {
-    title: "100% Code & Intellectual Property Ownership",
-    desc: "Transparent milestone economics with unconditional transfer of all code repositories, design assets, and production environments."
-  }
-];
-
-const METRIC_PILLS = [
-  { value: "100%", label: "Direct Developer Access" },
-  { value: "Zero", label: "Middlemen Overhead" },
-  { value: "2.5x", label: "Faster Sprint Velocity" },
-  { value: "100%", label: "Code & IP Ownership" }
-];
-
-function AboutGlassCard({ pillar, index }) {
-  const cardRef = useRef(null);
-  const [coords, setCoords] = useState({ x: 50, y: 50 });
-  const [tilt, setTilt] = useState({ x: 0, y: 0 });
-  const [isHovered, setIsHovered] = useState(false);
-
-  const handleMouseMove = (e) => {
-    if (!cardRef.current) return;
-    const rect = cardRef.current.getBoundingClientRect();
-    const x = e.clientX - rect.left;
-    const y = e.clientY - rect.top;
-    const centerX = rect.width / 2;
-    const centerY = rect.height / 2;
-
-    const rotateX = ((y - centerY) / centerY) * -4.5;
-    const rotateY = ((x - centerX) / centerX) * 4.5;
-
-    setCoords({ x, y });
-    setTilt({ x: rotateX, y: rotateY });
-  };
-
-  const handleMouseEnter = () => {
-    setIsHovered(true);
-  };
-
-  const handleMouseLeave = () => {
-    setIsHovered(false);
-    setTilt({ x: 0, y: 0 });
-  };
-
-  return (
-    <div
-      ref={cardRef}
-      className={`about-glass-card ${isHovered ? 'is-hovered' : ''}`}
-      onMouseMove={handleMouseMove}
-      onMouseEnter={handleMouseEnter}
-      onMouseLeave={handleMouseLeave}
-      style={{
-        transform: isHovered
-          ? `perspective(900px) rotateX(${tilt.x.toFixed(2)}deg) rotateY(${tilt.y.toFixed(2)}deg) translateY(-4px) scale3d(1.01, 1.01, 1.01)`
-          : 'perspective(900px) rotateX(0deg) rotateY(0deg) translateY(0) scale3d(1, 1, 1)',
-        transition: isHovered ? 'transform 0.1s ease-out' : 'transform 0.45s cubic-bezier(0.16, 1, 0.3, 1)'
-      }}
-    >
-      {/* Real-time Cursor Spotlight Glow */}
-      <div
-        className="about-card-spotlight"
-        style={{
-          opacity: isHovered ? 1 : 0,
-          background: `radial-gradient(340px circle at ${coords.x}px ${coords.y}px, rgba(214, 168, 63, 0.22), rgba(47, 105, 255, 0.14), transparent 70%)`
-        }}
-        aria-hidden="true"
-      />
-
-      {/* Traveling Luminous Shimmer Border */}
-      <div className="about-glass-card-glow" aria-hidden="true" />
-
-      {/* Top Header with Icon and Badge */}
-      <div className="about-card-header">
-        <div className="about-card-icon-wrap">
-          {pillar.icon}
-        </div>
-        <div className="about-card-badge-wrap">
-          <span className="about-card-number">{pillar.num}</span>
-          <span className="about-card-badge">{pillar.badge}</span>
-        </div>
-      </div>
-
-      <div className="about-card-body">
-        <h3 className="about-card-title">{pillar.title}</h3>
-        <p className="about-card-subtitle">{pillar.subtitle}</p>
-        <p className="about-card-desc">{pillar.desc}</p>
-
-        {/* 4 Core Capabilities Grid */}
-        <div className="about-card-capabilities">
-          {pillar.capabilities.map((cap, cIndex) => (
-            <div key={cIndex} className="about-cap-item">
-              <span className="about-cap-dot" />
-              <span className="about-cap-text">{cap}</span>
-            </div>
-          ))}
-        </div>
-      </div>
-
-      {/* Micro-Tags Footer */}
-      <div className="about-card-tags">
-        {pillar.tags.map((tag, tIndex) => (
-          <span key={tIndex} className="about-card-tag">
-            <span className="about-card-tag-dot" />
-            {tag}
-          </span>
-        ))}
-      </div>
-    </div>
-  );
-}
-
 export default function About() {
   return (
     <section id="about">
-      {/* Ambient Glow Orbs for Real Frosted Glass Refraction */}
+      {/* Radiant ambient glow orbs for specular depth */}
       <div className="about-ambient-orb about-ambient-orb-1" aria-hidden="true" />
       <div className="about-ambient-orb about-ambient-orb-2" aria-hidden="true" />
+      <div className="about-ambient-orb about-ambient-orb-center" aria-hidden="true" />
 
-      <div className="container about-fullscreen-container">
-        <div className="about-fullscreen-grid">
-          {/* Left Column: Company Story, Identity & Added Key Points */}
-          <div className="about-left-col reveal stagger-1">
-            <div className="about-left-top">
-              {/* Live Studio Status Eyebrow Badge */}
-              <div className="about-live-badge">
-                <span className="about-pulse-dot" />
-                <span className="about-live-text">DIRECT-TO-DEVELOPER ENGINEERING STUDIO</span>
-              </div>
-
-              <h2 className="section-heading about-main-heading">
-                High-Impact Software Engineering. <br />
-                <span className="gold-gradient-text">Zero Agency Bloat.</span>
-              </h2>
-
-              <p className="about-intro-text">
-                History Maker Tech is an engineering-first digital studio. We eliminate non-technical intermediaries, inflated agency overheads, and communication silos to deliver modern web apps, enterprise systems, and intelligent automations designed for measurable business growth.
-              </p>
-
-              {/* Added Key Points Below the Paragraph as Requested */}
-              <div className="about-company-points">
-                {COMPANY_KEY_POINTS.map((pt, pIdx) => (
-                  <div key={pIdx} className="about-point-item">
-                    <span className="about-point-icon">
-                      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round">
-                        <polyline points="20 6 9 17 4 12"></polyline>
-                      </svg>
-                    </span>
-                    <div className="about-point-content">
-                      <strong className="about-point-title">{pt.title}: </strong>
-                      <span className="about-point-desc">{pt.desc}</span>
-                    </div>
-                  </div>
-                ))}
-              </div>
-            </div>
-
-            <div className="about-left-bottom">
-              {/* 4 Interactive Metric Pills */}
-              <div className="about-metrics-pills">
-                {METRIC_PILLS.map((pill, i) => (
-                  <div key={i} className="about-pill-item">
-                    <div className="about-pill-top">
-                      <span className="about-pill-value gold-gradient-text">{pill.value}</span>
-                      <span className="about-pill-dot" />
-                    </div>
-                    <span className="about-pill-text">{pill.label}</span>
-                  </div>
-                ))}
-              </div>
-            </div>
+      <div className="container about-container">
+        {/* Section Header with Multi-Layer Glow */}
+        <div className="about-header reveal stagger-1">
+          <div className="about-eyebrow about-eyebrow-glow">
+            <span className="about-pulse-dot" />
+            <span className="about-eyebrow-text">WHO WE ARE · HISTORY MAKER TECH</span>
+            <span className="eyebrow-spark">✦</span>
           </div>
 
-          {/* Right Column: 2 Glowing 3D Glassmorphism Cards + 2 Action CTAs */}
-          <div className="about-right-cards reveal stagger-2">
-            {COMPANY_PILLARS.map((pillar, index) => (
-              <AboutGlassCard key={index} pillar={pillar} index={index} />
-            ))}
+          <h2 className="section-heading about-heading">
+            <span className="about-heading-lead">High-Impact Software Engineering.</span>
+            <span className="gold-glowing-wrapper">
+              <span className="gold-glowing-title">Zero Agency Bloat.</span>
+              <span className="gold-glowing-aura" aria-hidden="true">Zero Agency Bloat.</span>
+            </span>
+          </h2>
+        </div>
 
-            {/* Direct Action Buttons on the Right Side as Requested */}
-            <div className="about-cta-row">
-              <a
-                href={`https://wa.me/${CONFIG.whatsappNumber}?text=Hello%20History%20Maker%20Tech,%20I'd%20like%20to%20discuss%20a%20project%20directly%20with%20your%20developers.`}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="btn-gold magnetic"
-              >
-                <span>Talk With Our Developers</span>
-              </a>
-              <a href="#services" className="about-secondary-link">
-                <span>Explore All Services</span>
-              </a>
+        {/* Narrative Split: Vision & Partnership with Luminous Top Conduits */}
+        <div className="about-narrative-grid reveal stagger-2">
+          <div className="about-narrative-card narrative-left narrative-glow-card">
+            <div className="narrative-glow-line" aria-hidden="true" />
+            <div className="narrative-tag narrative-tag-glow">ENGINEERING FIRST</div>
+            <p className="narrative-text">
+              History Maker Tech is an engineering-first digital studio built to eliminate the inefficiencies of traditional IT agencies. We craft modern web platforms, iOS & Android applications, custom enterprise CRMs, and autonomous AI automations that help forward-thinking businesses scale with agility.
+            </p>
+          </div>
+
+          <div className="about-narrative-card narrative-right narrative-glow-card">
+            <div className="narrative-glow-line" aria-hidden="true" />
+            <div className="narrative-tag narrative-tag-glow">DIRECT ACCOUNTABILITY</div>
+            <p className="narrative-text">
+              We cut out non-technical middlemen, inflated retainers, and endless communication layers. When you work with us, you speak directly with senior software engineers who write your code, respect your deadlines, and hold themselves accountable to measurable commercial outcomes.
+            </p>
+          </div>
+        </div>
+
+        {/* Executive Metric Ribbon with Radiant Gold Halo */}
+        <div className="about-metrics-ribbon about-ribbon-glow reveal stagger-3">
+          <div className="ribbon-glow-ambient" aria-hidden="true" />
+          {CORE_METRICS.map((metric, i) => (
+            <div key={i} className="about-metric-cell">
+              <div className="metric-value about-metric-glow">{metric.value}</div>
+              <div className="metric-label">{metric.label}</div>
+              <div className="metric-sub">{metric.sub}</div>
             </div>
+          ))}
+        </div>
+
+        {/* 4 Architectural Pillars Grid with Neon Halo Icon Boxes & Light Sweeps */}
+        <div className="about-pillars-grid reveal stagger-3">
+          {ARCHITECTURAL_PILLARS.map((pillar, idx) => (
+            <div key={idx} className="about-pillar-card about-pillar-glow-card">
+              <div className="pillar-card-glow" aria-hidden="true" />
+              <div className="pillar-ambient-halo" aria-hidden="true" />
+              <div className="pillar-header">
+                <div className="pillar-icon-box pillar-icon-glow">{pillar.icon}</div>
+                <div className="pillar-meta">
+                  <span className="pillar-number">{pillar.num}</span>
+                  <span className="pillar-tag pillar-tag-glow">{pillar.tag}</span>
+                </div>
+              </div>
+              <h3 className="pillar-title">{pillar.title}</h3>
+              <p className="pillar-desc">{pillar.desc}</p>
+            </div>
+          ))}
+        </div>
+
+        {/* Bottom Partnership Bar with Gold Action Flare */}
+        <div className="about-footer-bar reveal stagger-4">
+          <div className="about-cta-group">
+            <a
+              href={`https://wa.me/${CONFIG.whatsappNumber}?text=Hello%20History%20Maker%20Tech,%20I'd%20like%20to%20discuss%20a%20project%20directly%20with%20your%20developers.`}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="btn-gold magnetic hero-btn-glow about-btn-radiant"
+            >
+              <span>Talk With Our Developers</span>
+              <span className="btn-shine-sweep"></span>
+            </a>
+            <a href="#services" className="about-footer-link about-link-glow">
+              <span>Explore Our Services</span>
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+                <line x1="5" y1="12" x2="19" y2="12"></line>
+                <polyline points="12 5 19 12 12 19"></polyline>
+              </svg>
+            </a>
+          </div>
+
+          <div className="about-assurance-tag">
+            <span className="assurance-bullet assurance-bullet-glow">✦</span>
+            <span>Enterprise-Grade Engineering · Milestone Economics · NDA-Protected</span>
           </div>
         </div>
       </div>
