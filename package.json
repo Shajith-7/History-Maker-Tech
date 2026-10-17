@@ -21,8 +21,10 @@
   "author": "History Maker Tech",
   "license": "UNLICENSED",
   "dependencies": {
+    "framer-motion": "^14.3.0",
     "gsap": "^3.12.7",
     "lenis": "^1.1.20",
+    "lottie-react": "^3.1.2",
     "lucide-react": "^1.58.0",
     "react": "^19.3.1",
     "react-dom": "^19.3.1",

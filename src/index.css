@@ -3514,68 +3514,50 @@ html.js-cinematic .reveal {
 }
 
 /* ==========================================================================
-   REALISTIC SPACE THEME & 3D SCROLLING BACKGROUND
+   SCROLL-DRIVEN BACKGROUND VIDEO (HMT BACKGROUND)
    ========================================================================== */
-.space-3d-canvas-wrap {
+.ambient-background,
+.video-scroll-bg-container {
   position: fixed;
   inset: 0;
   width: 100vw;
   height: 100vh;
-  pointer-events: none;
-  z-index: 0;
   overflow: hidden;
-}
-
-.space-3d-canvas-wrap canvas {
-  display: block;
-  width: 100% !important;
-  height: 100% !important;
-}
-
-.ambient-orb.orb-deep-space {
-  position: absolute;
-  width: min(55vw, 620px);
-  height: min(55vw, 620px);
-  border-radius: 50%;
-  background: radial-gradient(circle, rgba(14, 116, 244, 0.22) 0%, transparent 70%);
-  top: 12%;
-  right: -5%;
+  z-index: 0;
   pointer-events: none;
-  filter: blur(65px);
-  opacity: 0.7;
+  background: #020409;
 }
 
-.ambient-orb.orb-cosmic-purple {
+.video-scroll-element {
   position: absolute;
-  width: min(50vw, 540px);
-  height: min(50vw, 540px);
-  border-radius: 50%;
-  background: radial-gradient(circle, rgba(124, 58, 237, 0.2) 0%, transparent 70%);
-  bottom: 12%;
-  left: -8%;
+  top: 50%;
+  left: 50%;
+  width: 100vw;
+  height: 100vh;
+  min-width: 100%;
+  min-height: 100%;
+  transform: translate(-50%, -50%) scale(1.02);
+  object-fit: cover;
+  object-position: center center;
+  opacity: 0.88;
   pointer-events: none;
-  filter: blur(70px);
-  opacity: 0.65;
+  filter: contrast(1.06) brightness(0.92);
 }
 
-.ambient-orb.orb-stellar-gold {
-  position: absolute;
-  width: min(35vw, 420px);
-  height: min(35vw, 420px);
-  border-radius: 50%;
-  background: radial-gradient(circle, rgba(217, 119, 6, 0.16) 0%, transparent 70%);
-  top: 45%;
-  left: 20%;
-  pointer-events: none;
-  filter: blur(75px);
-  opacity: 0.5;
-}
-
-.space-vignette-overlay {
+.video-scroll-overlay {
   position: absolute;
   inset: 0;
-  background: radial-gradient(circle at center, transparent 35%, rgba(2, 4, 10, 0.88) 100%);
+  background: radial-gradient(circle at center, rgba(3, 7, 18, 0.38) 0%, rgba(2, 4, 10, 0.78) 100%);
   pointer-events: none;
+  z-index: 1;
+}
+
+.video-scroll-vignette {
+  position: absolute;
+  inset: 0;
+  box-shadow: inset 0 0 130px rgba(0, 0, 0, 0.88);
+  pointer-events: none;
+  z-index: 2;
 }
 
 /* ==========================================================================
