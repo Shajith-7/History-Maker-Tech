@@ -1,16 +1,19 @@
 import React from 'react';
+import SpaceBackground from './SpaceBackground';
 
 export default function AmbientBackground() {
   return (
     <div className="ambient-background" aria-hidden="true">
-      {/* Dynamic Radial Glows */}
-      <div className="ambient-orb orb-primary"></div>
-      <div className="ambient-orb orb-secondary"></div>
-      <div className="ambient-orb orb-gold"></div>
-      {/* Subtle Digital Studio Grid Overlay */}
-      <div className="ambient-grid-overlay"></div>
-      {/* Soft Vignette */}
-      <div className="ambient-vignette-overlay"></div>
+      {/* 3D Deep Space Simulation Canvas (Planet, Atmosphere, Starfields, Nebulae, Meteors) */}
+      <SpaceBackground />
+
+      {/* Realistic Deep Cosmos Nebula Glows */}
+      <div className="ambient-orb orb-deep-space"></div>
+      <div className="ambient-orb orb-cosmic-purple"></div>
+      <div className="ambient-orb orb-stellar-gold"></div>
+
+      {/* Deep Space Atmospheric Vignette */}
+      <div className="space-vignette-overlay"></div>
     </div>
   );
 }

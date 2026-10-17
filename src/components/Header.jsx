@@ -2,17 +2,17 @@ import React, { useState, useEffect } from 'react';
 import { CONFIG } from '../data/siteData';
 
 const NAV_ITEMS = [
-  { label: 'Home', href: '#home' },
-  { label: 'About', href: '#about' },
-  { label: 'Services', href: '#services' },
-  { label: 'Delivered Projects', href: '#projects' },
-  { label: 'Courses', href: '#courses' },
-  { label: 'Testimonials', href: '#testimonials' },
-  { label: 'FAQ', href: '#faq' },
-  { label: 'Contact', href: '#contact' }
+  { label: 'Home', page: 'home', hash: 'home' },
+  { label: 'About', page: 'home', hash: 'about' },
+  { label: 'Services', page: 'home', hash: 'services' },
+  { label: 'Delivered Projects', page: 'projects' },
+  { label: 'Courses', page: 'courses' },
+  { label: 'Testimonials', page: 'home', hash: 'testimonials' },
+  { label: 'FAQ', page: 'home', hash: 'faq' },
+  { label: 'Contact', page: 'home', hash: 'contact' }
 ];
 
-export default function Header() {
+export default function Header({ currentPage = 'home', onNavigate }) {
   const [isScrolled, setIsScrolled] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [activeSection, setActiveSection] = useState('home');
@@ -21,34 +21,68 @@ export default function Header() {
     const handleScroll = () => {
       setIsScrolled(window.scrollY > 20);
 
-      const sections = NAV_ITEMS.map((item) => item.href.substring(1));
-      const current = sections.find((section) => {
-        const el = document.getElementById(section);
-        if (el) {
-          const rect = el.getBoundingClientRect();
-          return rect.top <= 160 && rect.bottom >= 160;
-        }
-        return false;
-      });
-      if (current) setActiveSection(current);
+      if (currentPage === 'home') {
+        const sections = ['home', 'about', 'services', 'testimonials', 'faq', 'contact'];
+        const current = sections.find((section) => {
+          const el = document.getElementById(section);
+          if (el) {
+            const rect = el.getBoundingClientRect();
+            return rect.top <= 160 && rect.bottom >= 160;
+          }
+          return false;
+        });
+        if (current) setActiveSection(current);
+      }
     };
 
     window.addEventListener('scroll', handleScroll, { passive: true });
     return () => window.removeEventListener('scroll', handleScroll);
-  }, []);
+  }, [currentPage]);
 
   const closeMobileMenu = () => setMobileMenuOpen(false);
 
+  const handleItemClick = (e, item) => {
+    e.preventDefault();
+    closeMobileMenu();
+    if (onNavigate) {
+      if (item.page === 'projects') {
+        onNavigate('projects');
+      } else if (item.page === 'courses') {
+        onNavigate('courses');
+      } else {
+        onNavigate('home', item.hash);
+      }
+    }
+  };
+
+  const isItemActive = (item) => {
+    if (currentPage === 'projects') {
+      return item.page === 'projects';
+    }
+    if (currentPage === 'courses') {
+      return item.page === 'courses';
+    }
+    return item.page === 'home' && activeSection === item.hash;
+  };
+
   return (
     <>
-      <header id="site-header" className={isScrolled ? 'scrolled' : ''}>
+      <header id="site-header" className={`space-header-glow ${isScrolled ? 'scrolled' : ''}`}>
         <div className="container header-inner">
           {/* Brand Logo */}
-          <a href="#home" className="brand-link" aria-label="History Maker Tech">
+          <a
+            href="/"
+            onClick={(e) => {
+              e.preventDefault();
+              if (onNavigate) onNavigate('home');
+            }}
+            className="brand-link"
+            aria-label="History Maker Tech"
+          >
             <img
               src="/assets/images/logo.png"
               alt="History Maker Tech"
-              className="brand-logo-img"
+              className="brand-logo-img space-logo-glow"
               onError={(e) => {
                 e.currentTarget.onerror = null;
                 e.currentTarget.src = '/assets/images/logo.jpg';
@@ -59,25 +93,30 @@ export default function Header() {
           {/* Desktop Navigation Links */}
           <nav aria-label="Main Navigation">
             <ul className="nav-links-desktop">
-              {NAV_ITEMS.map((item) => {
-                const id = item.href.substring(1);
-                return (
-                  <li key={item.href} className="nav-item">
-                    <a
-                      href={item.href}
-                      className={activeSection === id ? 'active' : ''}
-                    >
-                      {item.label}
-                    </a>
-                  </li>
-                );
-              })}
+              {NAV_ITEMS.map((item) => (
+                <li key={item.label} className="nav-item">
+                  <a
+                    href={item.page === 'home' ? `#${item.hash}` : `/${item.page}`}
+                    onClick={(e) => handleItemClick(e, item)}
+                    className={`space-nav-link ${isItemActive(item) ? 'active' : ''}`}
+                  >
+                    {item.label}
+                  </a>
+                </li>
+              ))}
             </ul>
           </nav>
 
           {/* Header Action Button */}
           <div className="header-actions">
-            <a href="#contact" className="btn-header-cta magnetic">
+            <a
+              href="#contact"
+              onClick={(e) => {
+                e.preventDefault();
+                if (onNavigate) onNavigate('home', 'contact');
+              }}
+              className="btn-header-cta space-btn-glow magnetic"
+            >
               <span>Let's Talk</span>
             </a>
 
@@ -133,10 +172,11 @@ export default function Header() {
 
             <ul className="mobile-nav-links">
               {NAV_ITEMS.map((item) => (
-                <li key={item.href}>
+                <li key={item.label}>
                   <a
-                    href={item.href}
-                    onClick={closeMobileMenu}
+                    href={item.page === 'home' ? `#${item.hash}` : `/${item.page}`}
+                    onClick={(e) => handleItemClick(e, item)}
+                    className={isItemActive(item) ? 'active' : ''}
                   >
                     {item.label}
                   </a>

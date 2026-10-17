@@ -1,12 +1,22 @@
 import React from 'react';
 import { CONFIG } from '../data/siteData';
 
-export default function Footer() {
+export default function Footer({ onNavigate }) {
+  const handleNav = (e, page, hash) => {
+    if (onNavigate) {
+      e.preventDefault();
+      onNavigate(page, hash);
+    }
+  };
+
   return (
-    <footer id="site-footer">
-      <div className="container">
+    <footer id="site-footer" className="space-footer-glow">
+      {/* Radiant Deep Space Nebula Back-Glow */}
+      <div className="footer-glow-ambient" aria-hidden="true"></div>
+
+      <div className="container" style={{ position: 'relative', zIndex: 1 }}>
         {/* Footer Top Strip CTA */}
-        <div className="footer-top-strip reveal">
+        <div className="footer-top-strip space-strip-glow reveal">
           <div>
             <h3 className="footer-strip-title">Ready to build something meaningful?</h3>
             <p className="footer-strip-sub">Direct access to experienced developers. Zero agency bloat.</p>
@@ -24,18 +34,22 @@ export default function Footer() {
         {/* Footer Columns */}
         <div className="footer-columns-grid">
           <div className="footer-brand-col">
-            <a href="#home" aria-label="History Maker Tech Home">
+            <a
+              href="/"
+              onClick={(e) => handleNav(e, 'home', 'home')}
+              aria-label="History Maker Tech Home"
+            >
               <img
                 src="/assets/images/logo.png"
                 alt="History Maker Tech Logo"
-                className="footer-logo-img"
+                className="footer-logo-img space-logo-glow"
                 onError={(e) => {
                   e.currentTarget.onerror = null;
                   e.currentTarget.src = '/assets/images/logo.jpg';
                 }}
               />
             </a>
-            <div className="footer-slogan">IDEAS → TECHNOLOGY → GROWTH</div>
+            <div className="footer-slogan space-slogan-glow">IDEAS → TECHNOLOGY → GROWTH</div>
             <p style={{ fontSize: '0.9rem', color: 'var(--color-text-muted)', lineHeight: '1.6', maxWidth: '320px' }}>
               Direct-to-Developer Engineering. Zero Agency Bloat. Practical digital solutions built for scalable modern enterprise.
             </p>
@@ -44,26 +58,26 @@ export default function Footer() {
           <div>
             <h4 className="footer-col-title">Navigation</h4>
             <ul className="footer-links-list">
-              <li><a href="#home">Home</a></li>
-              <li><a href="#about">About</a></li>
-              <li><a href="#services">Services</a></li>
-              <li><a href="#projects">Delivered Projects</a></li>
-              <li><a href="#courses">Courses</a></li>
-              <li><a href="#testimonials">Testimonials</a></li>
-              <li><a href="#faq">FAQ</a></li>
-              <li><a href="#contact">Contact</a></li>
+              <li><a href="/" onClick={(e) => handleNav(e, 'home', 'home')}>Home</a></li>
+              <li><a href="/#about" onClick={(e) => handleNav(e, 'home', 'about')}>About</a></li>
+              <li><a href="/#services" onClick={(e) => handleNav(e, 'home', 'services')}>Services</a></li>
+              <li><a href="/projects" onClick={(e) => handleNav(e, 'projects')}>Delivered Projects</a></li>
+              <li><a href="/courses" onClick={(e) => handleNav(e, 'courses')}>Courses (Coming Soon)</a></li>
+              <li><a href="/#testimonials" onClick={(e) => handleNav(e, 'home', 'testimonials')}>Testimonials</a></li>
+              <li><a href="/#faq" onClick={(e) => handleNav(e, 'home', 'faq')}>FAQ</a></li>
+              <li><a href="/#contact" onClick={(e) => handleNav(e, 'home', 'contact')}>Contact</a></li>
             </ul>
           </div>
 
           <div>
             <h4 className="footer-col-title">Solutions</h4>
             <ul className="footer-links-list">
-              <li><a href="#services">Website Development</a></li>
-              <li><a href="#services">Custom Software</a></li>
-              <li><a href="#services">Mobile App Development</a></li>
-              <li><a href="#services">AI Automation Solutions</a></li>
-              <li><a href="#services">WhatsApp Automation</a></li>
-              <li><a href="#services">CRM Development</a></li>
+              <li><a href="/#services" onClick={(e) => handleNav(e, 'home', 'services')}>Website Development</a></li>
+              <li><a href="/#services" onClick={(e) => handleNav(e, 'home', 'services')}>Custom Software</a></li>
+              <li><a href="/#services" onClick={(e) => handleNav(e, 'home', 'services')}>Mobile App Development</a></li>
+              <li><a href="/#services" onClick={(e) => handleNav(e, 'home', 'services')}>AI Automation Solutions</a></li>
+              <li><a href="/#services" onClick={(e) => handleNav(e, 'home', 'services')}>WhatsApp Automation</a></li>
+              <li><a href="/#services" onClick={(e) => handleNav(e, 'home', 'services')}>CRM Development</a></li>
             </ul>
           </div>
 
@@ -100,7 +114,7 @@ export default function Footer() {
           <div className="copyright-text">
             © {new Date().getFullYear()} History Maker Tech. All rights reserved.
           </div>
-          <div style={{ fontFamily: 'var(--font-mono)', fontSize: '0.78rem', color: 'var(--color-text-muted)' }}>
+          <div className="footer-space-badge">
             DIRECT ACCESS · TRANSPARENT PRICING · ZERO BLOAT
           </div>
         </div>
